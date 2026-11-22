@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SOKO Smart – Buy, sell and open your shop in Kenya</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="stylesheet" href="soko.css?v=14">
+<link rel="stylesheet" href="mobile.css?v=2">
+<script defer src="mobile.js?v=1"></script>
+<style>
+.fband{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px;align-items:center;background:linear-gradient(105deg,#0B4A2E,#10613A 62%,#17703F);color:#fff;border-radius:22px;padding:28px 34px;margin:6px 0 4px}
+.fband:before{content:"";position:absolute;right:-30px;top:0;bottom:0;width:36%;background:linear-gradient(135deg,#F5A12E,#F58E20);clip-path:polygon(34% 0,100% 0,100% 100%,0 100%)}
+.fband>*{position:relative}
+.fband h3{margin:0 0 8px;font-size:30px;line-height:1.15;font-weight:800;color:#fff}.fband h3 span{color:#F5A12E}
+.fband p{margin:0 0 16px;color:#DDEBE1;max-width:46ch;font-size:15.5px;line-height:1.55}
+.fband .go{display:inline-flex;gap:8px;align-items:center;background:#F58E20;color:#fff;font-weight:800;border-radius:12px;padding:12px 22px;text-decoration:none}
+.fband .go:hover{background:#D9740A}
+.fband .alt{margin-left:14px;color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.fband ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;justify-self:end;font-weight:700;color:#fff}
+.fband li{display:flex;gap:12px;align-items:center}.fband li i{font-style:normal;width:34px;height:34px;border-radius:50%;background:#fff;color:#0B4A2E;display:grid;place-items:center;font-weight:800;flex:none}
+@media(max-width:760px){.fband{grid-template-columns:1fr;padding:24px 20px 34px}.fband:before{top:auto;left:0;right:0;width:auto;height:10px;clip-path:none}.fband h3{font-size:25px}.fband ul{justify-self:start}.fband .alt{display:block;margin:12px 0 0}}
+/* brand look for the two bands (added) */
+.fb-g h3 span{color:#FFC27A}
+.fband{isolation:isolate;border-radius:24px;padding:36px 42px;box-shadow:0 12px 32px rgba(11,74,46,.16);gap:28px}
+.fband:before{z-index:-1;right:-70px;top:-60px;bottom:-60px;width:42%;clip-path:polygon(32% 0,100% 0,100% 100%,0 100%)}
+.fband>*{z-index:0}
+.fband h3{font-size:32px;letter-spacing:-.01em}.fband p{line-height:1.6}
+.fband .go{padding:13px 24px;box-shadow:0 6px 16px rgba(0,0,0,.18);transition:transform .15s,background .15s}.fband .go:hover{transform:translateY(-2px)}
+.fband .alt{margin-left:16px;text-underline-offset:4px}
+.fband ul{width:min(100%,290px)}
+.fband li{background:#fff;color:#0B4A2E;border-radius:999px;padding:9px 18px 9px 10px;box-shadow:0 6px 16px rgba(0,0,0,.14)}
+.fband li i{background:#F58E20;color:#fff}.fband li i svg{display:block}
+.fb-o{background:linear-gradient(115deg,#FFF6EA 0%,#FFE9CC 100%);color:#0B4A2E;border:1px solid #F7D9B0}
+.fb-o:before{background:linear-gradient(135deg,#14703F,#0B4A2E)}
+.fb-o h3{color:#0B4A2E}.fb-o h3 span{color:#D9740A}.fb-o p{color:#4B5A51}
+.fb-o .go{background:#0B4A2E;color:#fff}.fb-o .go:hover{background:#0F5C34}.fb-o .alt{color:#0B4A2E}.fb-o li i{background:#0B4A2E}
+@media(max-width:760px){.fband{padding:26px 20px 40px;border-radius:20px}.fband:before{top:auto;bottom:0;height:12px;clip-path:none}.fband h3{font-size:25px}.fband ul{width:100%}}
+/* the link class "alt" also means a cream section background in soko.css: remove that box */
+.fband a.alt{background:none;padding:0;border:0;box-shadow:none}
+/* Main category sidebar with hover popup (categories + sub category thumbnails) */
+.hm .sc2.cs{overflow:visible!important;position:relative;z-index:10}
+.cs .csi{display:block}
+.csp{display:none;position:absolute;left:100%;top:0;margin-left:-1px;width:min(780px,calc(100vw - 340px));min-height:100%;max-height:540px;overflow:auto;background:#fff;border:1px solid #e6e6e6;border-radius:0 14px 14px 0;box-shadow:0 14px 34px rgba(11,74,46,.18);padding:18px 22px;box-sizing:border-box;z-index:60;text-align:left}
+.csp:before{content:"";position:absolute;left:-16px;top:0;bottom:0;width:16px}
+.cs .csi:hover>.csp,.cs .csi.on>.csp{display:block}
+.cs .csi:hover>a,.cs .csi.on>a{background:#FFF3E3;color:#0B4A2E}
+.csp .csc{margin-bottom:18px}
+.csp a.cst{display:block;padding:0 0 7px;margin:0 0 12px;border:0;border-bottom:1px solid #eee;background:none;font-weight:800;font-size:15px;color:#0B4A2E;text-decoration:none}
+.csp a.cst:hover{color:#F58E20}
+.csp .csg{display:grid;grid-template-columns:repeat(auto-fill,minmax(98px,1fr));gap:14px}
+.csp a.css{display:grid;justify-items:center;gap:7px;padding:0;border:0;background:none;text-align:center;font-size:12.5px;font-weight:600;color:#333;text-decoration:none;line-height:1.25}
+.csp a.css:hover{color:#F58E20}
+.csp a.css img,.csp .cph{width:72px;height:72px;border-radius:12px;object-fit:cover;background:#F4EFE7;display:grid;place-items:center;color:#B89A74;font-weight:800;font-size:22px;border:1px solid #eee}
+@media(max-width:900px){.csp{display:none!important}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="soko.js?v=32"></script>
+</head>
+<body>
+<div id="hd"></div>
+<main><div class="w" id="home"><div class="msg">Loading…</div></div></main>
+<div id="ft"></div>
+<script>
+shell("index.html");
+const ok=t=>sb.from(t).select("*").eq("status","approved");
+const arrow=ic("right",14);
+const head=(s,def)=>`<div class="hh"><h2>${esc(s.title||def)}</h2>${s.link?`<a href="${esc(safeUrl(s.link))}">View All ${arrow}</a>`:""}</div>`;
+const catIcon=n=>{const w=String(n).toLowerCase().split(/[ &]/)[0],c=CATS.find(x=>x[1].toLowerCase().includes(w));return c?c[0]:"box"};
+
+/* ----- sections ----- */
+const LATE=[];
+const R={
+ products(s){const id="p"+s.id;LATE.push(async()=>{const el=document.getElementById(id);if(!sb){el.innerHTML='<div class="msg">Connect Supabase to load products.</div>';return}
+   let q=ok("products");q=s.source==="featured"?q.eq("is_featured",true).order("created_at",{ascending:false}):s.source==="trending"?q.order("views",{ascending:false,nullsFirst:false}):q.order("created_at",{ascending:false});
+   const {data,error}=await q.limit(Math.min(+s.count||5,20));el.innerHTML=error?`<div class="msg">${esc(error.message)}</div>`:(data||[]).map(r=>pcard(r,"products","title",s.badge||"")).join("")||'<div class="msg">Nothing here yet.</div>';paintFavs()});
+  return `<section class="hs">${head(s,"Products")}<div class="g5" id="${id}"><div class="sk"></div></div></section>`},
+ hotcat(s){const id="hc"+s.id,hid="hh"+s.id;LATE.push(async()=>{const el=document.getElementById(id),sec=el&&el.closest("section");if(!el)return;if(!sb||!s.cat){sec.remove();return}
+   const [c,p]=await Promise.all([sb.from("categories").select("id,name").eq("id",+s.cat).maybeSingle(),ok("products").eq("category_id",+s.cat).order("created_at",{ascending:false}).limit(Math.min(+s.count||5,20))]);
+   if(p.error||!(p.data||[]).length){sec.remove();return}
+   const h=document.getElementById(hid);if(h)h.innerHTML=`<h2>${esc(s.title||(c.data&&c.data.name)||"Hot Category")}</h2><a href="shop.html?category=${+s.cat}">View All ${arrow}</a>`;
+   el.innerHTML=p.data.map(r=>pcard(r,"products","title",s.badge||"Hot")).join("");paintFavs()});
+  return `<section class="hs"><div class="hh" id="${hid}"><h2>${esc(s.title||"Hot Category")}</h2></div><div class="g5" id="${id}"><div class="sk"></div></div></section>`},
+ flash(s){const id="fl"+s.id,ids=(s.ids||[]).filter(Boolean).slice(0,5);if(!ids.length)return"";
+  LATE.push(async()=>{const el=document.getElementById(id),sec=el&&el.closest("section");if(!el)return;if(!sb){sec.remove();return}
+   const {data,error}=await ok("products").in("id",ids);if(error||!(data||[]).length){sec.remove();return}
+   const by={};data.forEach(r=>by[String(r.id)]=r);
+   el.innerHTML=ids.map(k=>by[String(k)]).filter(Boolean).map(r=>pcard(r,"products","title",s.badge||"Flash")).join("");paintFavs();
+   const t=sec.querySelector("[data-end]");if(t){const end=new Date(t.dataset.end).getTime();if(end){let iv;const tick=()=>{const d=end-Date.now();if(d<=0){clearInterval(iv);sec.remove();return}const h=Math.floor(d/36e5),m=Math.floor(d%36e5/6e4),x=Math.floor(d%6e4/1e3);t.textContent="Ends in "+h+"h "+String(m).padStart(2,"0")+"m "+String(x).padStart(2,"0")+"s"};tick();iv=setInterval(tick,1000)}}});
+  return `<section class="hs fls"><div class="hh"><h2>${esc(s.title||"Flash Sales")}</h2>${s.ends?`<span class="fcd" data-end="${esc(s.ends)}"></span>`:""}${s.link?`<a href="${esc(safeUrl(s.link))}">View All ${arrow}</a>`:""}</div><div class="g5" id="${id}"><div class="sk"></div></div></section>`},
+ hotcats(s){const id="hk"+s.id,ids=(s.cats||[]).slice(0,20);if(!ids.length)return"";
+  LATE.push(async()=>{const el=document.getElementById(id),sec=el&&el.closest("section");if(!el)return;if(!sb){sec.remove();return}
+   const {data,error}=await sb.from("categories").select("id,name").in("id",ids.map(Number));if(error||!(data||[]).length){sec.remove();return}
+   const by={};data.forEach(c=>by[String(c.id)]=c);
+   el.innerHTML=ids.map(k=>by[String(k)]).filter(Boolean).map(c=>`<a class="hct" href="shop.html?category=${c.id}"><span class="hci">${ic(catIcon(c.name),30)}</span><span>${esc(c.name)}</span></a>`).join("")});
+  return `<section class="hs">${head(s,"Hot Categories")}<div class="hcg" id="${id}"><div class="sk"></div></div></section>`},
+ whatsnew(s){const id="wn"+s.id;LATE.push(async()=>{const el=document.getElementById(id);if(!el)return;if(!sb){el.innerHTML='<div class="msg">Connect Supabase to load products.</div>';return}
+   const {data,error}=await ok("products").order("created_at",{ascending:false}).limit(Math.min(+s.count||12,24));
+   el.innerHTML=error?`<div class="msg">${esc(error.message)}</div>`:(data||[]).map(r=>pcard(r,"products","title","New")).join("")||'<div class="msg">Nothing here yet.</div>';paintFavs()});
+  return `<section class="hs">${head({...s,link:s.link||"shop.html?sort=latest"},"What’s New")}<div class="g6" id="${id}"><div class="sk"></div></div></section>`},
+ banners(s){const it=(s.items||[]).filter(x=>x&&x.title);if(!it.length)return"";
+  return `<section class="hs"><div class="promos" data-anim="${esc(s.anim||"none")}" data-hover="${esc(s.hover||"none")}" data-float="${s.float?1:0}">${it.slice(0,4).map(x=>`<div class="promo" style="--pc:${esc(/^#[0-9a-f]{3,8}$/i.test(x.color||"")?x.color:"#FDE3DC")}">${x.tag?`<span class="pt">${esc(x.tag)}</span>`:""}<div class="tx"><h3>${esc(x.title)}</h3>${x.sub?`<p>${esc(x.sub)}</p>`:""}${x.btn?`<a class="btn g" href="${esc(safeUrl(x.link))}">${esc(x.btn)}</a>`:""}</div><div class="pi">${x.img?`<img loading="lazy" alt="" src="${esc(x.img)}">`:ic("tag",64)}</div></div>`).join("")}</div></section>`},
+ shops(s){LATE.push(async()=>{const el=document.getElementById("sh"+s.id);if(!sb)return;let r=await ok("shops").order("rating",{ascending:false,nullsFirst:false}).limit(+s.count||8);if(r.error)r=await ok("shops").order("views",{ascending:false,nullsFirst:false}).limit(+s.count||8);
+   el.innerHTML=r.error?`<div class="msg">${esc(r.error.message)}</div>`:(r.data||[]).map(x=>shopCard(x)).join("")||'<div class="msg">No shops yet.</div>'});
+  return `<section class="hs">${head(s,"Shops")}<div class="shops" id="sh${s.id}"><div class="sk"></div></div></section>`},
+ jobs(s){LATE.push(async()=>{const el=document.getElementById("jb"+s.id);if(!sb)return;const {data,error}=await ok("jobs").order("created_at",{ascending:false}).limit(+s.count||6);el.innerHTML=error?`<div class="msg">${esc(error.message)}</div>`:(data||[]).map(jcard).join("")||'<div class="msg">No jobs yet.</div>'});
+  return `<section class="hs">${head(s,"Jobs")}<div class="jobs" id="jb${s.id}"><div class="sk"></div></div></section>`},
+ blog(s){const id="bg"+s.id,it=(s.items||[]).filter(x=>x&&x.title);
+  LATE.push(async()=>{const el=document.getElementById(id),sec=el&&el.closest("section");if(!el)return;let rows=[];
+   if(sb){const {data,error}=await sb.from("blog_posts").select("title,slug,excerpt,cover_url,category,published_at").eq("status","published").order("published_at",{ascending:false,nullsFirst:false}).limit(Math.min(+s.count||3,6));
+    if(!error&&data)rows=data.map(r=>({title:r.title,img:r.cover_url,link:"blog.html?p="+encodeURIComponent(r.slug),date:[r.category,r.published_at?new Date(r.published_at).toLocaleDateString("en-KE",{day:"numeric",month:"short",year:"numeric"}):""].filter(Boolean).join(" · ")}))}
+   if(!rows.length)rows=it;if(!rows.length){sec.remove();return}
+   el.innerHTML=rows.slice(0,6).map(x=>`<a class="bl" ${x.link?`href="${esc(safeUrl(x.link))}"`:""}><div class="bi">${x.img?`<img loading="lazy" alt="" src="${esc(x.img)}">`:ic("book",30)}</div><div><b>${esc(x.title)}</b><div class="m">${esc(x.date||"")}</div></div></a>`).join("")});
+  return `<section class="hs">${head({...s,link:s.link||"blog.html"},"From Our Blog")}<div class="blogs" id="${id}"><div class="sk"></div></div></section>`},
+ community(s){return `<section class="hs"><div class="comm"><div class="ct"><span>${ic("mail",22)}</span><div><h3>${esc(s.title||"Join our community")}</h3><p>${esc(s.text||"")}</p></div></div><form id="nl"><input type="email" name="e" required placeholder="Enter your email address" aria-label="Email address"><button class="btn g">${esc(s.btn||"Subscribe")}</button></form></div></section>`},
+ brands(s){const it=(s.items||[]).filter(x=>x&&(x.name||x.img));if(!it.length)return"";
+  return `<section class="hs">${head(s,"Top Brands")}<div class="brands">${it.slice(0,16).map(x=>`<a ${x.link?`href="${esc(safeUrl(x.link))}"`:""} title="${esc(x.name||"")}">${x.img?`<img loading="lazy" alt="${esc(x.name||"")}" src="${esc(x.img)}">`:esc(x.name)}</a>`).join("")}</div></section>`},
+ cta(){return `<section class="hs pad"><div class="cta"><div><h3>Open your shop</h3><p>Get your own storefront link, a chat inbox and a dashboard to manage products.</p><a class="btn" href="openshop.html" style="color:var(--od)">Open a Shop</a></div><div><h3>Post a job or give something away</h3><p>Hire for free, or list giveaways and charity items from your profile.</p><a class="btn" href="profile.html#jobs">Go to my profile</a></div></div></section>`}};
+
+/* ----- hero slider ----- */
+function slider(slides,H){H=H||{};const S=slides.filter(x=>x&&x.title);if(!S.length)return"";
+ return `<div class="slider" id="sl" data-anim="${esc(H.anim||"fade")}" data-text="${esc(H.textAnim||"none")}" data-speed="${+H.speed||6}" data-auto="${H.autoplay===false?0:1}" aria-roledescription="carousel" aria-label="Featured offers">${S.map((x,i)=>{const dk=x.theme==="dark",bg=/^#[0-9a-f]{3,8}$/i.test(x.bg||"")?x.bg:"#FFF3E3";
+  return `<div class="slide ${i?"":"on"} ${dk?"dk":""} ${x.img?"":"noim"}" style="--sb:${bg}" role="group" aria-label="${i+1} of ${S.length}"><div class="tx"><${i?"h2":"h1"}>${esc(x.title)}</${i?"h2":"h1"}>${x.sub?`<p>${esc(x.sub)}</p>`:""}${x.btn?`<a class="btn ${dk?"p":"g"}" href="${esc(safeUrl(x.link))}">${esc(x.btn)}</a>`:""}</div><div class="im">${x.img?`<img alt="" ${i?'loading="lazy"':""} src="${esc(x.img)}">`:ic("basket",120)}</div></div>`}).join("")}
+  ${S.length>1?`<div class="dots">${S.map((_,i)=>`<button class="${i?"":"on"}" aria-label="Go to slide ${i+1}"></button>`).join("")}</div>`:""}</div>`}
+function runSlider(){const el=document.getElementById("sl");if(!el)return;const sl=[...el.querySelectorAll(".slide")],dt=[...el.querySelectorAll(".dots button")];if(sl.length<2)return;let i=0,t;
+ const go=n=>{i=(n+sl.length)%sl.length;sl.forEach((s,k)=>s.classList.toggle("on",k===i));dt.forEach((d,k)=>d.classList.toggle("on",k===i))},
+ auto=()=>{clearInterval(t);if(el.dataset.auto!=="0"&&!matchMedia("(prefers-reduced-motion:reduce)").matches)t=setInterval(()=>go(i+1),Math.min(15,Math.max(3,+el.dataset.speed||6))*1000)};
+ dt.forEach((d,k)=>d.onclick=()=>{go(k);auto()});
+ el.addEventListener("mouseenter",()=>clearInterval(t));el.addEventListener("mouseleave",auto);auto()}
+
+function runPromos(){const els=[...document.querySelectorAll('.promos[data-anim]:not([data-anim="none"]) .promo')];if(!els.length)return;
+ const show=el=>{el.style.animationDelay=[...el.parentNode.children].indexOf(el)*.12+"s";el.classList.add("in")};
+ if(!("IntersectionObserver" in window)){els.forEach(show);return}
+ const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){show(x.target);io.unobserve(x.target)}}),{threshold:.15});els.forEach(e=>io.observe(e))}
+
+const FB_ICONS={ok:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>',star:'<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17l-6.1 3.6 1.4-6.8L2.2 9.1l6.9-.8z"/></svg>',lock:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',img:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg>',chat:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>'};
+const FBAND=`<section class="hs"><div class="fband fb-g"><div><h3>Hire top talent on <span>SOKO Smart</span></h3><p>Compare portfolios, pick the right freelancer at a fixed price, and pay securely through SOKO Smart.</p><a class="go" href="freelance.html#services">Browse services ${arrow}</a><a class="alt" href="freelance.html#hub">Become a freelancer</a></div><ul><li><i>${FB_ICONS.ok}</i>Trusted professionals</li><li><i>${FB_ICONS.star}</i>Fixed prices</li><li><i>${FB_ICONS.lock}</i>Secure payments</li></ul></div></section>`;
+const SBAND=S=>S.bandOn===false?"":`<section class="hs"><div class="fband fb-o"><div><h3>${esc(S.bandTitle||"")}<span>${esc(S.bandHi||"")}</span></h3><p>${esc(S.bandText||"")}</p><a class="go" href="servicehub.html#services">${esc(S.bandBtn||"Browse services")} ${arrow}</a><a class="alt" href="servicehub.html#hub">${esc(S.bandAlt||"Offer your services")}</a></div><ul><li><i>${FB_ICONS.ok}</i>Approved providers</li><li><i>${FB_ICONS.img}</i>Work galleries</li><li><i>${FB_ICONS.chat}</i>Chat directly</li></ul></div></section>`;
+/* ----- page ----- */
+(async()=>{const C=await siteCfg();
+ let cats=[],mains=[],subs=[];
+ if(sb){let r=await sb.from("categories").select("id,name,main_id").eq("section","products").order("sort_order");if(r.error)r=await sb.from("categories").select("id,name").eq("section","products").order("sort_order");if(r.error)console.warn("[SOKO] categories not loaded:",r.error.message);cats=r.data||[];
+  const m=await sb.from("main_categories").select("id,name").eq("section","products").order("sort_order").order("name");if(m.error)console.warn("[SOKO] main_categories not loaded:",m.error.message);else mains=m.data||[];
+  const ids=cats.map(c=>c.id);if(ids.length){let s=await sb.from("subcategories").select("id,name,category_id,image_url").in("category_id",ids).order("sort_order").order("name");if(s.error)s=await sb.from("subcategories").select("id,name,category_id").in("category_id",ids).order("sort_order");if(s.error)console.warn("[SOKO] subcategories not loaded:",s.error.message);else subs=s.data||[]}}
+ /* sidebar entries: Main categories (each with its categories + sub categories in the hover popup) */
+ let items;
+ if(mains.length){items=mains.map(m=>({name:m.name,href:"shop.html?main="+m.id,cats:cats.filter(c=>String(c.main_id)===String(m.id))}));
+  const un=cats.filter(c=>!mains.some(m=>String(m.id)===String(c.main_id)));if(un.length)items.push({name:"Other",href:"shop.html",cats:un})}
+ else if(cats.length)items=cats.map(c=>({name:c.name,href:"shop.html?category="+c.id,cats:[c]}));
+ else items=[]; /* never show the built-in demo list: only categories created in the admin area */
+ let freeCats=[];if(sb){try{const fr=await sb.from("categories").select("id,name").eq("section","free").order("sort_order");freeCats=fr.data||[]}catch(e){}}
+ let freeSubs=[];if(sb&&freeCats.length){try{let fs=await sb.from("subcategories").select("id,name,category_id,image_url").in("category_id",freeCats.map(c=>c.id)).order("sort_order");if(fs.error)fs=await sb.from("subcategories").select("id,name,category_id").in("category_id",freeCats.map(c=>c.id));freeSubs=fs.data||[]}catch(e){}}
+ const freeItem=freeCats.length?{name:"Free Things",href:"free.html",free:1,cats:freeCats}:null;
+ const list=freeItem?items.slice(0,11).concat([freeItem]):items,ico=c=>c.free?"gift":catIcon(c.name);
+ const flyout=it=>{if(it.free)return `<div class="csp" role="region" aria-label="Free Things">${it.cats.map(c=>{const ss=freeSubs.filter(x=>String(x.category_id)===String(c.id)),tile=(n,img)=>`<a class="css" href="free.html?category=${c.id}">${img?`<img loading="lazy" alt="" src="${esc(img)}">`:`<span class="cph">${esc((n||"?").charAt(0).toUpperCase())}</span>`}<span>${esc(n)}</span></a>`;
+   return `<div class="csc"><a class="cst" href="free.html?category=${c.id}">${esc(c.name)}</a><div class="csg">${ss.length?ss.map(x=>tile(x.name,x.image_url)).join(""):tile(c.name,"")}</div></div>`}).join("")}</div>`;
+ const cs=it.cats.filter(c=>subs.some(s=>String(s.category_id)===String(c.id))||true);if(!cs.length)return"";
+  return `<div class="csp" role="region" aria-label="${esc(it.name)}">${cs.map(c=>{const ss=subs.filter(s=>String(s.category_id)===String(c.id));
+   return `<div class="csc"><a class="cst" href="shop.html?category=${c.id}">${esc(c.name)}</a>${ss.length?`<div class="csg">${ss.map(s=>`<a class="css" href="shop.html?category=${c.id}&subcategory=${s.id}">${s.image_url?`<img loading="lazy" alt="" src="${esc(s.image_url)}">`:`<span class="cph">${esc((s.name||"?").charAt(0).toUpperCase())}</span>`}<span>${esc(s.name)}</span></a>`).join("")}</div>`:`<div class="m">No sub categories yet</div>`}</div>`}).join("")}</div>`};
+ const sideOn=C.sidebar&&C.sidebar.enabled!==false;
+ const side=sideOn?`<aside class="sc2 cs" aria-label="Categories"><h3>${ic("grid",18)} ${esc(C.sidebar.title||"Shop by Category")}</h3>${list.slice(0,12).map(c=>`<div class="csi"><a href="${c.href}">${ic(ico(c),18)}<span>${esc(c.name)}</span><span class="ch">${ic("right",14)}</span></a>${flyout(c)}</div>`).join("")}<a href="shop.html">${ic("grid",18)}<span>More Categories</span><span class="ch">${ic("right",14)}</span></a></aside>`:"";
+ const mc=sideOn?`<div class="mcats">${list.slice(0,12).map(c=>`<a href="${c.href}">${ic(ico(c),16)}${esc(c.name)}</a>`).join("")}</div>`:"";
+ const sfl=u=>{u=String(u||"").trim();return /^(https?:\/\/|[a-z0-9_\-./?=&%#]+$)/i.test(u)?u:""};
+ const feats=(C.features||[]).filter(x=>x&&(x.title||x.img)).map(x=>{if(x.img){const im=`<img loading="lazy" alt="${esc(x.title||"")}" src="${esc(x.img)}">`,u=sfl(x.link);return `<div class="fbn">${u?`<a href="${esc(u)}" aria-label="${esc(x.title||"Banner")}">${im}</a>`:im}</div>`}
+  return `<div><span class="fi">${ic(x.icon||"check",22)}</span><span><b>${esc(x.title)}</b><span>${esc(x.sub||"")}</span></span></div>`}).join("");
+ const allSecs=(C.sections||[]).slice();if(!allSecs.some(s=>s&&s.type==="blog")){const k=allSecs.findIndex(s=>s&&s.type==="community");allSecs.splice(k<0?allSecs.length:k,0,{id:"sblog",type:"blog",title:"From Our Blog",link:"blog.html",count:3,on:true})}
+ const secs=allSecs.filter(s=>s&&s.on!==false&&R[s.type]),ci=secs.findIndex(s=>s.type==="cta"),parts=secs.map(s=>R[s.type](s));
+ parts.splice(ci<0?parts.length:ci,0,FBAND,SBAND(C.services));const body=parts.join("");
+ $("#home").innerHTML=`${mc}<div class="hm ${sideOn?"":"nos"}">${side}${slider(C.hero.slides||[],C.hero)}</div>${feats?`<div class="f4">${feats}</div>`:""}${body}`;
+ const csA=document.querySelector(".cs");if(csA&&matchMedia("(hover:none)").matches){csA.addEventListener("click",e=>{const a=e.target.closest(".csi>a");if(!a)return;const it=a.parentNode;if(!it.querySelector(".csp"))return;if(!it.classList.contains("on")){e.preventDefault();csA.querySelectorAll(".csi.on").forEach(x=>x.classList.remove("on"));it.classList.add("on")}})}
+ runSlider();runPromos();LATE.forEach(f=>f());paintFavs();
+ const nl=document.getElementById("nl");if(nl)nl.onsubmit=async e=>{e.preventDefault();if(!sb){toast("Connect Supabase to subscribe");return}const em=nl.e.value.trim();const {error}=await sb.from("newsletter_subscribers").insert({email:em});
+  if(error&&error.code!=="23505"){toast("Could not subscribe right now. Please try again later.");return}nl.reset();toast("Thanks! You are subscribed.")}})();
+</script>
+<script src="sidebanners.js?v=4"></script>
+</body>
+</html>

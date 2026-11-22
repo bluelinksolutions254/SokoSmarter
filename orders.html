@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Orders – SOKO Smart</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="stylesheet" href="soko.css?v=14">
+<link rel="stylesheet" href="mobile.css?v=2">
+<script defer src="mobile.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>window.SOKO_NO_ADS=1</script>
+<script src="soko.js?v=32"></script>
+<style>
+.od-top{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:14px}.od-top h2{margin:0}
+.od-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:16px}
+.od-stat{background:var(--g);color:#fff;border-radius:16px;padding:14px 16px;display:grid;gap:2px}.od-stat:nth-child(2){background:var(--o)}.od-stat:nth-child(3){background:#fff;color:var(--tx);border:1px solid var(--bd)}
+.od-stat small{opacity:.9;font-size:12.5px}.od-stat b{font-size:clamp(18px,3vw,24px);line-height:1.15}
+.od-tabs{display:flex;gap:6px;overflow-x:auto;padding:2px 0 14px}.od-tabs button{border:1px solid var(--bd);background:var(--bg);color:var(--tx);border-radius:20px;padding:8px 18px;white-space:nowrap;font-weight:700;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.od-tabs .on{background:var(--g);border-color:var(--g);color:#fff}.od-tabs i{font-style:normal;background:rgba(0,0,0,.12);border-radius:10px;padding:0 8px;font-size:12px;line-height:20px}
+.od-list{display:grid;gap:16px}
+.od-c{background:var(--bg);border:1px solid var(--bd);border-radius:18px;padding:18px;display:grid;gap:14px;box-shadow:0 2px 10px rgba(11,74,46,.05)}
+.od-h{display:flex;gap:10px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}.od-h b{font-size:17px}.od-h .m{margin-top:2px}
+.od-tot{text-align:right;display:grid;gap:4px;justify-items:end}.od-tot b{font-size:19px;color:var(--g)}
+.od-pill{display:inline-flex;gap:6px;align-items:center;border-radius:999px;padding:3px 11px;font-size:12.5px;font-weight:700;background:#FFF1DC;color:#B45F06}
+.od-pill.g{background:#E3F4EA;color:#14633F}.od-pill.r{background:#FDE8E6;color:#B3261E}.od-pill.n{background:#EEF1EE;color:#55605A}
+.od-stp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:2px 0 0;padding:0;list-style:none}
+.od-s{position:relative;display:grid;justify-items:center;gap:7px;text-align:center;font-size:12.5px;color:var(--mut);font-weight:600}
+.od-s::after{content:"";position:absolute;top:21px;left:-50%;width:100%;height:4px;background:var(--bd);border-radius:2px}.od-s:first-child::after{display:none}
+.od-s span{position:relative;z-index:1;width:46px;height:46px;border-radius:50%;background:#EEF1EE;color:#9AA39D;display:grid;place-items:center;border:3px solid #fff;box-sizing:border-box}
+.od-s span svg{width:21px;height:21px}
+.od-s.done{color:var(--tx)}.od-s.done span{background:var(--g);color:#fff}.od-s.done::after{background:var(--g)}
+.od-s.now span{background:var(--o);color:#fff;box-shadow:0 0 0 5px rgba(245,142,32,.22)}.od-s.now{color:var(--od)}
+@media(prefers-reduced-motion:no-preference){.od-s.now span{animation:odp 2s ease-in-out infinite}}@keyframes odp{50%{box-shadow:0 0 0 9px rgba(245,142,32,.08)}}
+.od-msg{background:var(--ot);border-radius:12px;padding:10px 14px;font-size:14px;display:flex;gap:10px;align-items:flex-start}
+.od-its{display:grid;gap:8px}.od-it{display:flex;gap:12px;align-items:center;color:inherit;text-decoration:none;border:1px solid var(--bd);border-radius:12px;padding:8px}
+.od-it img,.od-it .ph{width:52px;height:52px;border-radius:10px;object-fit:cover;background:var(--ot);flex:none}.od-it b{display:block;overflow-wrap:anywhere}.od-it:hover{border-color:var(--o)}
+.od-act{display:flex;gap:8px;flex-wrap:wrap}
+.od-es{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;border:1px solid var(--bd);border-radius:14px;padding:14px;background:var(--bg)}
+.od-es.hold{border-color:#F4C98E;background:#FFFAF2}.od-es.dis{border-color:#F2B8B3;background:#FFF6F5}.od-es.old{opacity:.88}
+.od-es b{overflow-wrap:anywhere}.od-es .note{font-size:13.5px;color:var(--mut);margin-top:6px}
+.od-es .bt{display:grid;gap:8px;min-width:190px}
+.od-sec{margin:20px 0 10px;font-size:18px}.od-sec:first-child{margin-top:0}
+.od-intro{background:var(--ot);border:1px solid #F7D9AE;border-radius:14px;padding:12px 16px;margin-bottom:14px;font-size:14px}
+@media(max-width:640px){.od-stats{grid-template-columns:1fr}.od-es{grid-template-columns:1fr}.od-es .bt{min-width:0;grid-template-columns:1fr 1fr}.od-tot{text-align:left;justify-items:start}.od-s{font-size:11.5px}.od-s span{width:40px;height:40px}.od-s::after{top:18px}}
+</style>
+</head>
+<body>
+<div id="hd"></div>
+<main><section class="alt"><div class="w" style="max-width:900px">
+<div class="od-top"><h2>My Orders <a href="wallet.html">My wallet</a></h2><a class="btn" href="shop.html">Continue shopping</a></div>
+<div id="od"><div class="msg">Loading your orders…</div></div>
+</div></section></main>
+<div id="ft"></div>
+<script>
+shell("");
+const kes=n=>"KSh "+Number(n||0).toLocaleString("en-KE",{minimumFractionDigits:2,maximumFractionDigits:2});
+const dtm=d=>d?new Date(d).toLocaleString("en-KE",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}):"";
+const ERR={wrong_password:"That is not your password.",no_password:"Your account has no password (you signed in another way). Contact SOKO Smart support to release this payment.",not_held:"These funds are no longer held.",not_your_order:"That order is not yours.",not_buyer:"Only the buyer can release these funds.",bad_reason:"Please explain the problem (at least 10 characters).",login_required:"Please log in again."};
+const errTxt=e=>{const m=String(e&&e.message||e),k=Object.keys(ERR).find(x=>m.includes(x));return k?ERR[k]:m};
+const SVG=p=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+const STEPS=[["pending","Placed",'<path d="M9 3h6v4H9z"/><path d="M6 5H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-1"/><path d="M8 13h8M8 17h5"/>'],
+ ["confirmed","Confirmed",'<circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/>'],
+ ["shipped","On the way",'<path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>'],
+ ["delivered","Delivered",'<path d="M12 2.8l8.2 4.4v9.6L12 21.2 3.8 16.8V7.2z"/><path d="M3.8 7.2L12 11.6l8.2-4.4M12 11.6v9.6"/>']];
+const MSG={pending:"Waiting for the seller to confirm your order.",confirmed:"The seller confirmed your order and is getting it ready.",shipped:"Your order is on its way to you.",delivered:"Your order was marked as delivered. If everything is fine, release the payment in the Escrow tab.",cancelled:"This order was cancelled."};
+let U=null,L=[],SN={},PI={},tab=location.hash==="#escrow"?"escrow":"track",REC={};
+const lf=d=>{const ms=new Date(d)-Date.now();if(!(ms>0))return"any moment now";const h=Math.floor(ms/36e5),m=Math.floor(ms%36e5/6e4);return(h?h+" h ":"")+m+" min"};
+
+function stepper(o){const st=String(o.status||"pending"),ix=Math.max(0,STEPS.findIndex(x=>x[0]===st));
+ return `<ol class="od-stp" aria-label="Order progress">${STEPS.map((x,k)=>`<li class="od-s ${k<ix||(k===ix&&st==="delivered")?"done":k===ix?"now":""}"><span>${SVG(k<ix||(k===ix&&st==="delivered")?'<path d="M20 6L9 17l-5-5"/>':x[2])}</span>${x[1]}</li>`).join("")}</ol>`}
+function items(o){return `<div class="od-its">${(o.order_items||[]).map(i=>{const im=PI[String(i.product_id)];return `<a class="od-it" href="product.html?s=products&id=${encodeURIComponent(i.product_id)}">${im?`<img alt="" loading="lazy" src="${esc(im)}">`:'<span class="ph"></span>'}<span><b>${esc(i.title||"Item")}</b><span class="m">Qty ${esc(i.qty||i.quantity||1)}${i.price!=null?" · "+kes(i.price):""}</span></span></a>`}).join("")}</div>`}
+const payPill=o=>o.escrow_disputed_at&&o.pay_status==="held"?'<span class="od-pill r">In dispute · on hold</span>':o.pay_status==="held"?'<span class="od-pill">Held in escrow</span>':o.pay_status==="released"?'<span class="od-pill g">Released</span>':o.pay_status==="refunded"?'<span class="od-pill r">Refunded</span>':"";
+const shopOf=o=>o.shop_id?(SN[String(o.shop_id)]||"Shop"):"SOKO Smart";
+
+function trackCard(o){const st=String(o.status||"pending"),cx=st==="cancelled";
+ return `<article class="od-c"><div class="od-h"><div><b>Order #${esc(String(o.id).slice(0,6))}</b><div class="m">${esc(dtm(o.created_at))} · ${esc(shopOf(o))}</div></div>
+  <div class="od-tot"><b>${kes(o.escrow_amount||o.total)}</b><span>${cx?'<span class="od-pill r">Cancelled</span>':st==="delivered"?'<span class="od-pill g">Delivered</span>':'<span class="od-pill">In progress</span>'} ${payPill(o)}</span></div></div>
+  ${cx?"":stepper(o)}<div class="od-msg">${esc(MSG[st]||"We are processing your order.")}</div>${items(o)}
+  <div class="od-act"><button class="btn s" data-oc="${esc(o.id)}">Chat with seller</button>${o.pay_status==="held"?`<button class="btn s p" data-go="escrow">Release payment</button>`:""}</div></article>`}
+
+function escRow(o,mine){const it=(o.order_items||[]).map(i=>i.title+" × "+(i.qty||i.quantity||1)).join(", "),h=o.pay_status==="held",dp=h&&!!o.escrow_disputed_at,
+ note=dp?(mine?"Your money is on hold. Press “Release funds” once your order arrives and it goes to the seller.":"The buyer has held "+kes(o.escrow_amount||o.total)+" in dispute"+(o.escrow_dispute_reason?" (reason: "+o.escrow_dispute_reason+")":"")+". The money is locked in the Dispute Wallet until the buyer confirms or the SOKO Smart team decides."):
+  !h||!o.escrow_release_at?"":mine?"Sent to the seller automatically in "+lf(o.escrow_release_at)+" unless you release it or report a problem.":"Reaches your wallet in "+lf(o.escrow_release_at)+", or sooner if the buyer releases it.";
+ return `<div class="od-es ${dp?"dis":h?"hold":"old"}"><div style="min-width:0"><b>Order #${esc(String(o.id).slice(0,6))} · ${kes(o.escrow_amount||o.total)}</b><div class="m">${esc(it||"Order")} · ${esc(dtm(o.created_at))}</div><div style="margin-top:6px">${payPill(o)}</div>${note?`<div class="note">${esc(note)}</div>`:""}</div>
+ ${h&&mine?`<div class="bt"><button class="btn p" data-rel="${esc(o.id)}">Release funds</button>${dp?"":`<button class="btn" data-nr="${esc(o.id)}">I have not received it</button>`}</div>`:""}</div>`}
+
+function draw(){const box=$("#od");if(!U)return;
+ const mineL=L.filter(o=>o.buyer_id===U.id),sellL=L.filter(o=>o.seller_id===U.id&&o.buyer_id!==U.id),
+  held=mineL.filter(o=>o.pay_status==="held"),heldSum=held.reduce((a,o)=>a+ +(o.escrow_amount||o.total||0),0),
+  active=mineL.filter(o=>!["delivered","cancelled"].includes(String(o.status||"pending"))).length,done=mineL.filter(o=>o.status==="delivered").length,
+  escMine=mineL.filter(o=>o.pay_status),escSell=sellL.filter(o=>o.pay_status),escN=held.length+escSell.filter(o=>o.pay_status==="held").length;
+ const empty=t=>`<div class="empty">${t}<br><br><a class="btn p" href="shop.html">Start shopping</a></div>`;
+ let body;
+ if(tab==="track")body=mineL.length?`<div class="od-list">${mineL.map(trackCard).join("")}</div>`:empty("You have not placed any orders yet.");
+ else body=`<div class="od-intro"><b>Orders in escrow.</b> Orders you paid for show a Release button: release only after you receive your order. Orders customers paid to you reach your wallet when they release.</div>
+  <h3 class="od-sec">Orders you paid for</h3>${escMine.length?`<div class="od-list" style="gap:12px">${escMine.map(o=>escRow(o,1)).join("")}</div>`:'<div class="empty">No paid orders yet.</div>'}
+  ${escSell.length?`<h3 class="od-sec">Orders customers paid to you</h3><div class="od-list" style="gap:12px">${escSell.map(o=>escRow(o,0)).join("")}</div>`:""}`;
+ box.innerHTML=`<div class="od-stats"><div class="od-stat"><small>Held in escrow for you</small><b>${kes(heldSum)}</b></div><div class="od-stat"><small>Orders in progress</small><b>${active}</b></div><div class="od-stat"><small>Delivered orders</small><b>${done}</b></div></div>
+  <div class="od-tabs" role="tablist"><button role="tab" data-tab="track" class="${tab==="track"?"on":""}" aria-selected="${tab==="track"}">Track your orders <i>${mineL.length}</i></button><button role="tab" data-tab="escrow" class="${tab==="escrow"?"on":""}" aria-selected="${tab==="escrow"}">Orders in escrow <i>${escN}</i></button></div>${body}`}
+
+async function load(quiet){
+ if(!sb){$("#od").innerHTML='<div class="msg">Connect Supabase (CFG in soko.js) to load your orders.</div>';return}
+ U=await user();
+ if(!U){needLogin("Log in or create an account to see your orders.");$("#od").innerHTML='<div class="msg">Please log in to see your orders.<br><br><button class="btn p" id="gl">Login</button> <button class="btn" id="gs">Sign Up</button></div>';$("#gl").onclick=logView;$("#gs").onclick=signView;return}
+ if(!quiet)$("#od").innerHTML='<div class="msg">Loading your orders…</div>';
+ try{await sb.rpc("soko_escrow_auto_release")}catch(e){}
+ const r=await sb.from("orders").select("*,order_items(*)").or(`buyer_id.eq.${U.id},seller_id.eq.${U.id}`).order("created_at",{ascending:false}).limit(100);
+ if(r.error){$("#od").innerHTML=`<div class="msg">${esc(r.error.message)}</div>`;return}
+ L=r.data||[];REC={};L.forEach(o=>REC[o.id]=o);
+ const sids=[...new Set(L.map(o=>o.shop_id).filter(Boolean).map(String))],pids=[...new Set(L.flatMap(o=>(o.order_items||[]).map(i=>i.product_id)).filter(Boolean).map(String))];
+ await Promise.all([sids.length?sb.from("shops").select("id,name").in("id",sids).then(x=>(x.data||[]).forEach(z=>SN[String(z.id)]=z.name),()=>{}):0,pids.length?sb.from("products").select("id,cover_url").in("id",pids).then(x=>(x.data||[]).forEach(z=>PI[String(z.id)]=z.cover_url),()=>{}):0]);
+ draw()}
+
+function release(id){
+ openD(`<h3 style="margin:0 0 4px">Release the funds?</h3><p class="m" style="margin:0 0 10px">Only release when you have received your order. The money goes to the seller's wallet and cannot be taken back.</p>
+ <form id="wrf" style="display:grid;gap:10px" novalidate><label>Account password<input name="p1" type="password" autocomplete="current-password" required></label><label>Confirm password<input name="p2" type="password" autocomplete="current-password" required></label><div id="wre" role="alert" style="min-height:18px;color:var(--r);font-size:14px"></div><button class="btn p">Confirm and release</button></form>`);
+ const f=$("#wrf"),e=m=>{$("#wre").textContent=m||""};f.elements.p1.focus();
+ f.onsubmit=async ev=>{ev.preventDefault();e();
+  if(!f.elements.p1.value||!f.elements.p2.value)return e("Type your password in both boxes.");
+  if(f.elements.p1.value!==f.elements.p2.value)return e("The two passwords are not the same.");
+  const b=f.querySelector("button");b.disabled=true;const r=await sb.rpc("soko_escrow_confirm",{p_order:id,p_password:f.elements.p1.value});b.disabled=false;
+  if(r.error)return e(errTxt(r.error));$("#dlg").close();toast("Funds released to the seller");load(true)}}
+function dispute(id){
+ openD(`<h3 style="margin:0 0 4px">I have not received my order</h3><p class="m" style="margin:0 0 10px">Your money stays safe and will not be sent to the seller. When your order arrives, come back here and press “Release funds”.</p>
+ <form id="wdf" style="display:grid;gap:10px" novalidate><label>What happened? *<textarea name="r" rows="3" maxlength="500" required placeholder="e.g. The order has not arrived yet"></textarea></label><div id="wde" role="alert" style="min-height:18px;color:var(--r);font-size:14px"></div><button class="btn p">Hold my money</button></form>`);
+ const f=$("#wdf");f.onsubmit=async ev=>{ev.preventDefault();const b=f.querySelector("button");b.disabled=true;
+  const r=await sb.rpc("soko_escrow_dispute",{p_order:id,p_reason:f.elements.r.value.trim()});b.disabled=false;
+  if(r.error){$("#wde").textContent=errTxt(r.error);return}$("#dlg").close();toast("Your money is on hold until you confirm your order arrived");load(true)}}
+
+document.addEventListener("click",e=>{const t=e.target;let b;
+ if(b=t.closest("[data-tab]")){tab=b.dataset.tab;history.replaceState(null,"",tab==="escrow"?"#escrow":"#track");draw();return}
+ if(b=t.closest("[data-go]")){tab=b.dataset.go;history.replaceState(null,"","#"+tab);draw();scrollTo({top:0,behavior:"smooth"});return}
+ if(b=t.closest("[data-rel]")){release(b.dataset.rel);return}
+ if(b=t.closest("[data-nr]")){dispute(b.dataset.nr);return}
+ if(b=t.closest("[data-oc]")){const o=REC[b.dataset.oc];if(!o)return;
+  if(!o.seller_id){toast("This seller cannot be reached from here yet. Use the chat button at the bottom of the page.");return}
+  if(!window.SokoChat){toast("Chat is still loading, please try again");return}
+  SokoChat.chatWith(o.seller_id,o.shop_id||null,"Hi, I am asking about my order #"+String(o.id).slice(0,6)+".")}});
+addEventListener("hashchange",()=>{const t=location.hash==="#escrow"?"escrow":"track";if(t!==tab){tab=t;draw()}});
+setInterval(()=>{if(U&&!document.hidden&&!document.querySelector("dialog[open]"))load(true)},30000);
+if(sb)sb.auth.onAuthStateChange(ev=>{if(ev==="SIGNED_IN"||ev==="SIGNED_OUT")setTimeout(load,0)});
+load();
+</script>
+</body>
+</html>

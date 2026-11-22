@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Achievements – SOKO Smart</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="stylesheet" href="soko.css?v=14">
+<link rel="stylesheet" href="mobile.css?v=2">
+<script defer src="mobile.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="soko.js?v=32"></script>
+<script src="badges.js?v=2"></script>
+<style>
+.ah{display:flex;gap:20px;align-items:center;flex-wrap:wrap;background:var(--g);color:#fff;border-radius:16px;padding:20px 22px;margin-bottom:16px}
+.ah h2{margin:0;color:#fff}.ah p{margin:2px 0 0;opacity:.9;font-size:14px}
+.ah .xp{flex:1;min-width:220px}.bar{height:12px;border-radius:6px;background:rgba(255,255,255,.25);overflow:hidden;margin:10px 0 6px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#F58E20,#FFC766);border-radius:6px;transition:width .6s}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:4px 0 12px}.tabs button{border:1px solid var(--bd);background:var(--bg);color:var(--tx);border-radius:20px;padding:6px 16px;white-space:nowrap;font-weight:700;cursor:pointer}.tabs .on{background:var(--g);border-color:var(--g);color:#fff}
+.bg{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:12px}
+.bdc{position:relative;display:grid;justify-items:center;align-content:start;gap:8px;text-align:center;background:var(--bg);border:1px solid var(--bd);border-radius:14px;padding:16px 10px 12px}
+.bdc.bdlk{background:transparent}.bdc .m{font-size:12.5px}.bdc .xpt{color:var(--od);font-weight:700;font-size:12.5px}
+.bdc .st{position:absolute;top:6px;right:6px;border:0;background:none;font-size:22px;cursor:pointer;color:#c9c2b6;padding:4px}.bdc .st.on{color:var(--o)}
+.mm{display:flex;gap:12px;align-items:center;background:var(--ot);border:1.5px solid var(--o);border-radius:14px;padding:14px 16px;margin-bottom:16px}
+.lb{display:grid;gap:6px;margin:0;padding:0;list-style:none}.lb li{display:flex;gap:10px;align-items:center;padding:8px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg)}.lb li b{flex:1}
+@media(prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<div id="hd"></div>
+<main><section class="alt"><div class="w" style="max-width:900px">
+<div id="mm"></div>
+<div id="me"></div>
+<h2 style="margin:18px 0 8px">Earned badges</h2><div id="earned" class="bg"></div>
+<h2 style="margin:22px 0 4px">Next achievements</h2>
+<div class="tabs" id="tabs" role="tablist" aria-label="Badge groups"></div><div id="locked" class="bg"></div>
+<h2 style="margin:22px 0 8px">Top contributors</h2><ol class="lb" id="lb"></ol>
+<p class="m" style="margin-top:14px">Every contribution counts. Every achievement deserves recognition.</p>
+</div></section></main>
+<div id="ft"></div>
+<script>
+shell("achievements.html");
+const BGCATS=[["all","All"],["community","Community"],["seller","Sellers"],["freelancer","Freelancers"],["client","Clients"],["buyer","Buyers"],["special","Special"]];
+let U=null,ALL=[],MINE=new Map(),tab="all";
+const dt=d=>new Date(d).toLocaleDateString("en-KE",{day:"numeric",month:"short",year:"numeric"});
+const tipE=(b,m)=>({title:b.manual?"Why you were awarded this":"Why you earned this",text:b.description||"Earned for your contributions.",extra:[m&&m.note?"Note: "+m.note:"",b.manual?"Awarded by the SOKO Smart team":"",m&&m.awarded_at?"On "+dt(m.awarded_at):"","+"+b.points+" XP"].filter(Boolean).join(" · ")});
+const tipL=b=>({title:"How to earn it",text:b.description||"Keep contributing to unlock this badge.",extra:"+"+b.points+" XP"});
+const first=n=>{const p=String(n||"Member").trim().split(/\s+/);return p[0]+(p[1]?" "+p[1][0]+".":"")};
+function head(pts){const L=SokoBadges.level(pts);
+ $("#me").innerHTML=`<div class="ah">${SokoBadges.coin(L.index,84)}
+  <div class="xp"><h2>${esc(L.name)}</h2><p>Level ${L.index} of 5 · ${pts.toLocaleString("en-KE")} XP</p>
+  <div class="bar" role="progressbar" aria-valuenow="${L.pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${L.pct}%"></i></div>
+  <p>${L.next?`${L.toNext.toLocaleString("en-KE")} XP to ${esc(L.next)}`:"You have reached the top level. Thank you!"}</p></div></div>`}
+function earned(){const L=ALL.filter(b=>MINE.has(b.id));
+ $("#earned").innerHTML=L.length?L.map(b=>{const m=MINE.get(b.id);return `<div class="bdc">${SokoBadges.medal(b,{size:84,name:1,tip:tipE(b,m)})}<span class="m">${esc(b.description||"")}</span><span class="xpt">+${b.points} XP</span><span class="m">${new Date(m.awarded_at).toLocaleDateString("en-KE",{day:"numeric",month:"short",year:"numeric"})}</span><button class="st ${m.featured?"on":""}" data-f="${esc(b.id)}" aria-pressed="${!!m.featured}" aria-label="Show ${esc(b.name)} on my profile" title="Show on my profile">${m.featured?"★":"☆"}</button></div>`}).join(""):'<div class="msg">No badges yet. Your first one is waiting: complete your profile or make your first contribution.</div>'}
+function locked(){const L=ALL.filter(b=>!MINE.has(b.id)&&!b.manual&&(tab==="all"||b.category===tab));
+ $("#tabs").innerHTML=BGCATS.map(([k,l])=>`<button type="button" role="tab" data-t="${k}" class="${k===tab?"on":""}" aria-selected="${k===tab}">${l}</button>`).join("");
+ $("#locked").innerHTML=L.length?L.map(b=>`<div class="bdc bdlk">${SokoBadges.medal(b,{size:84,name:1,locked:1,tip:tipL(b)})}<span class="m">${esc(b.description||"")}</span><span class="xpt">+${b.points} XP</span></div>`).join(""):'<div class="msg">Nothing left in this group. Well done!</div>'}
+async function board(){const r=await sb.from("member_points").select("*").order("points",{ascending:false}).limit(10);
+ if(r.error||!(r.data||[]).length){$("#lb").innerHTML='<li class="m">The leaderboard fills up as members earn badges.</li>';return}
+ const ids=r.data.map(x=>x.user_id),p=await sb.from("profiles").select("id,full_name").in("id",ids),nm={};(p.data||[]).forEach(x=>nm[x.id]=x.full_name);
+ $("#lb").innerHTML=r.data.map((x,i)=>`<li><span class="m" style="width:22px">${i+1}</span><b>${esc(first(nm[x.user_id]))}</b><span class="m">${x.badge_count} badges</span><span>${x.points.toLocaleString("en-KE")} XP</span></li>`).join("")}
+async function motm(){const d=new Date(),m=d.toISOString().slice(0,7)+"-01",r=await sb.from("member_of_month").select("user_id,reason").eq("month",m).maybeSingle();
+ if(!r.data){$("#mm").innerHTML="";return}
+ const p=await sb.from("profiles").select("full_name").eq("id",r.data.user_id).maybeSingle();
+ $("#mm").innerHTML=`<div class="mm"><span style="color:var(--o);display:inline-grid;flex:none">${SokoBadges.icon("star",36)}</span><div><b>Member of the Month: ${esc(first(p.data&&p.data.full_name))}</b><div class="m">${esc(r.data.reason||"")}</div></div></div>`}
+async function setup(){
+ if(!sb){$("#me").innerHTML='<div class="msg">Connect Supabase (CFG in soko.js) to load achievements.</div>';return}
+ U=await user();if(!U){needLogin("Log in or create an account to see your achievements.");$("#me").innerHTML='<div class="msg">Log in to see your badges and progress.</div>'}
+ const b=await sb.from("badges").select("*").eq("active",true).order("sort_order");
+ if(b.error){$("#me").innerHTML=`<div class="msg">${esc(/relation|schema cache/i.test(b.error.message)?"Badges are not set up yet. Run supabase-badges.sql in Supabase.":b.error.message)}</div>`;return}
+ ALL=(b.data||[]).filter(x=>x.category!=="agent");
+ if(U){try{await sb.rpc("soko_check_my_badges")}catch(e){}}
+ if(U){const m=await sb.from("user_badges").select("badge_id,awarded_at,featured,note").eq("user_id",U.id);MINE=new Map((m.data||[]).map(x=>[x.badge_id,x]))}
+ head(ALL.filter(x=>MINE.has(x.id)).reduce((a,x)=>a+x.points,0));earned();locked();board();motm()}
+$("#tabs").addEventListener("click",e=>{const t=e.target.closest("[data-t]");if(t){tab=t.dataset.t;locked()}});
+$("#earned").addEventListener("click",async e=>{const s=e.target.closest("[data-f]");if(!s||!U)return;const id=s.dataset.f,m=MINE.get(id),on=!m.featured;
+ if(on&&[...MINE.values()].filter(x=>x.featured).length>=3){toast("You can show up to 3 badges on your profile");return}
+ const {error}=await sb.from("user_badges").update({featured:on}).eq("user_id",U.id).eq("badge_id",id);
+ if(error){toast(error.message,"error");return}m.featured=on;earned();toast(on?"Badge added to your profile":"Badge removed from your profile")});
+setup();if(sb)sb.auth.onAuthStateChange(()=>setTimeout(setup,0));
+</script>
+</body>
+</html>

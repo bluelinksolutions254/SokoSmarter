@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agents – SOKO Smart</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="stylesheet" href="agents.css?v=5">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="blogmd.js"></script>
+<script src="badges.js?v=2"></script>
+<script defer src="agentsfix.js?v=1"></script>
+</head>
+<body>
+<header class="hdr"><div class="bar"><a class="brand" href="agents.html" id="brand"><img src="logo.png" alt="SOKO Smart"><small>AGENTS</small></a><nav id="nv" aria-label="Main"></nav><div id="acct"></div></div></header>
+<main>
+<div id="site">
+<section class="hero" id="home" aria-label="Become an agent">
+ <svg class="sc" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs><radialGradient id="sun" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff6d8"/><stop offset=".35" stop-color="#ffd48a" stop-opacity=".8"/><stop offset="1" stop-color="#ffd48a" stop-opacity="0"/></radialGradient></defs>
+  <circle cx="780" cy="170" r="210" fill="url(#sun)"/><circle cx="780" cy="170" r="34" fill="#fffbe9"/>
+  <path d="M0 360 Q200 250 380 330 T760 300 T1200 340 V640 H0Z" fill="#3d6b49" opacity=".85"/>
+  <path d="M0 430 Q260 340 520 420 T1200 400 V640 H0Z" fill="#2d5a3b"/>
+  <g fill="#0f3f28"><path d="M120 470l36-120 36 120z"/><path d="M142 430l34-100 34 100z" transform="translate(-4 -14)"/><path d="M1020 450l40-130 40 130z"/><path d="M1060 420l36-110 36 110z" transform="translate(0 -10)"/><path d="M60 480l28-90 28 90z"/></g>
+  <path d="M0 520 Q300 460 640 510 T1200 490 V640 H0Z" fill="#7aa95d"/>
+  <g transform="translate(700 372)"><rect x="0" y="40" width="250" height="96" fill="#e9d2a8"/><path d="M-22 44L125 -6 272 44z" fill="#b5532a"/><path d="M-22 44L125 -6 272 44 262 52 -12 52z" fill="#8d3f1f"/><rect x="26" y="66" width="60" height="50" fill="#ffd27a"/><rect x="104" y="66" width="60" height="50" fill="#ffd27a"/><rect x="184" y="66" width="40" height="70" fill="#7a4a2a"/><rect x="195" y="0" width="22" height="30" fill="#8d3f1f"/><path d="M26 66h60v50H26zM104 66h60v50h-60z" fill="none" stroke="#7a4a2a" stroke-width="4"/></g>
+  <path d="M0 600 Q400 540 900 590 T1200 570 V640 H0Z" fill="#4f8a3f"/>
+ </svg>
+ <div class="w"><span class="tag">Join the SOKO Smart agents</span><h1>Grow with SOKO Smart. Earn with every customer you bring.</h1><p>Refer shoppers and sellers across Kenya, keep track of every customer, and withdraw your earnings straight to M-Pesa.</p><div class="row"><button class="btn o" data-do="signup" type="button">Become an agent</button><a class="btn" href="#about">About us</a></div></div>
+</section>
+<div class="pbar" role="list"><div class="f" role="listitem"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Free to join</div><div class="f" role="listitem"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg>Earn on every referral</div><div class="f" role="listitem"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="3"/><path d="M16 13h2M2 10h20"/></svg>Withdraw to M-Pesa</div><button class="btn p" data-do="signup" type="button">Join now</button></div>
+
+<section class="sec" id="about"><div class="w ab">
+ <div class="pic"><span id="abimg"><svg viewBox="0 0 520 340" aria-hidden="true"><rect width="520" height="340" fill="#cfe6f5"/><rect y="230" width="520" height="110" fill="#7aa95d"/><g fill="#0f3f28"><path d="M60 240l30-110 30 110z"/><path d="M450 240l30-120 30 120z"/></g><rect x="150" y="140" width="220" height="110" fill="#c98a4f"/><path d="M130 146L260 70 390 146z" fill="#6b3a1d"/><rect x="180" y="168" width="48" height="48" fill="#ffd27a"/><rect x="292" y="168" width="48" height="48" fill="#ffd27a"/><rect x="236" y="196" width="40" height="54" fill="#5d3519"/></svg></span><span class="b1">Grow<br>with us</span><span class="b2" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7 6 4 9.5 4 14a8 8 0 0 0 16 0c0-4.5-3-8-8-12z"/></svg></span></div>
+ <div><h2 id="abh">About Us</h2><div id="abt"></div><ul id="abl"></ul><button class="btn p" id="abb" data-do="signup" type="button">Join as an agent</button></div></div></section>
+
+<section class="sec gr" id="why"><div class="w"><h2>Why work with us</h2><p class="lead">Simple to start, clear to follow and built to reward the people who grow SOKO Smart.</p>
+ <div class="cards">
+  <div class="cd"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><h3>Earn on every referral</h3><p>When the customers and shops you bring do business on SOKO Smart, you earn.</p></div>
+  <div class="cd"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="3"/><path d="M16 13h2M2 10h20"/></svg></span><h3>Withdraw to M-Pesa</h3><p>Your earnings sit in your agent wallet. Withdraw to your phone whenever you are ready.</p></div>
+  <div class="cd"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span><h3>Know your customers</h3><p>Every customer you bring is saved in My Customers, so nothing gets lost.</p></div>
+  <div class="cd"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><h3>Support from our team</h3><p>The SOKO Smart team is behind you, and Agency Blogs share tips to help you grow.</p></div>
+ </div>
+ <div class="steps"><div><b>Sign up</b><span>Create your free agent account and verify your email.</span></div><div><b>Share your link</b><span>Introduce people to SOKO Smart with your referral link.</span></div><div><b>Earn and withdraw</b><span>Watch your wallet grow and withdraw to M-Pesa.</span></div></div></div></section>
+
+<section class="sec cr" id="blogs"><div class="w"><h2>Agency Blogs</h2><p class="lead">Tips, news and stories for SOKO Smart agents.</p><div id="bl"><p class="m">Loading…</p></div></div></section>
+
+<section class="sec"><div class="w"><div class="cta"><div><h2>Ready to start earning?</h2><p>Sign up free. It only takes a minute.</p></div><button class="btn o" data-do="signup" type="button">Sign Up</button></div></div></section>
+</div>
+<div id="app" hidden><div class="w shell"><aside class="sd2" id="side" aria-label="Agent menu"></aside><div class="mn" id="appc"></div></div></div>
+</main>
+<footer><div class="w"><span>© SOKO Smart. All rights reserved.</span><span><a href="index.html">Back to SOKO Smart</a></span></div></footer>
+<dialog id="dl" aria-modal="true"></dialog>
+<script>
+const CFG={url:"https://xalatowgjhwayrncrfbq.supabase.co",key:"sb_publishable_CfY5JZTUXpx51pkfbwey7w_jZtrYwog"};
+const sb=window.supabase?supabase.createClient(CFG.url,CFG.key):null;
+const tmpClient=()=>supabase.createClient(CFG.url,CFG.key,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false,storageKey:"soko-agent-tmp"}});
+const $=s=>document.querySelector(s),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const COUNTIES="Baringo,Bomet,Bungoma,Busia,Elgeyo-Marakwet,Embu,Garissa,Homa Bay,Isiolo,Kajiado,Kakamega,Kericho,Kiambu,Kilifi,Kirinyaga,Kisii,Kisumu,Kitui,Kwale,Laikipia,Lamu,Machakos,Makueni,Mandera,Marsabit,Meru,Migori,Mombasa,Murang'a,Nairobi,Nakuru,Nandi,Narok,Nyamira,Nyandarua,Nyeri,Samburu,Siaya,Taita-Taveta,Tana River,Tharaka-Nithi,Trans Nzoia,Turkana,Uasin Gishu,Vihiga,Wajir,West Pokot".split(",");
+const HEARD=["Facebook","Instagram","TikTok","WhatsApp","Friend or family","Google search","Other"];
+const kes=n=>"KSh "+Number(n||0).toLocaleString("en-KE"),dt=d=>d?new Date(d).toLocaleDateString("en-KE",{day:"numeric",month:"short",year:"numeric"}):"";
+const MIN=100;
+const SV=(p,z=20)=>`<svg width="${z}" height="${z}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+const I={user:SV('<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',22),wallet:SV('<rect x="2" y="6" width="20" height="14" rx="3"/><path d="M16 13h2M2 10h20"/>',20),copy:SV('<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',16),out:SV('<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>',18),
+ dash:SV('<rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/>'),
+ cust:SV('<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>'),
+ shops:SV('<path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/>'),
+ port:SV('<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2 13h20"/>'),
+ ach:SV('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a2 2 0 0 0 0 4h3M16 6h3a2 2 0 0 1 0 4h-3M12 13v4M8 20h8M9.5 17h5"/>')};
+const NAVS=[["dash","Dashboard"],["refs","My Referrals"],["pprod","Promote Products"],["pshop","Promote Shops"],["psvc","Promote Services"],["perf","Performance"],["wd","Withdrawal History"],["prof","My Profile"],["help","Support & Help"]];
+Object.assign(I,{refs:I.cust,pprod:SV('<path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7z"/><path d="M3.3 7L12 12l8.7-5M12 22V12"/>'),pshop:I.shops,psvc:SV('<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/>'),perf:SV('<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>'),wd:SV('<path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5M12 7v5l3 2"/>'),prof:I.user,help:SV('<circle cx="12" cy="12" r="9"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4M12 17.5h.01"/>')});
+let U=null,AG=null,BAL=0,CUST=[],TX=[],SHOPS=[],PROF=null,PORT=[],BADGES=[],MINE=new Map(),MAINS=[],VIEW="site",SETUP="";
+const help=m=>/relation|does not exist|schema cache|function|column/i.test(m||"")?"Agents are not fully set up yet. Run supabase-agents.sql in the Supabase SQL editor, then reload. ("+m+")":m;
+const toast=(t,k)=>{let e=$("#ts");if(!e){e=document.createElement("div");e.id="ts";e.setAttribute("role","status");e.style.cssText="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:99999;max-width:min(92vw,460px);padding:12px 18px;border-radius:14px;color:#fff;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.3)";document.body.appendChild(e)}
+ e.style.background=k==="error"?"#b3261e":"#0B4A2E";e.textContent=t;e.hidden=false;clearTimeout(e._t);e._t=setTimeout(()=>e.hidden=true,4200)};
+const popup=(h,wide)=>{const d=$("#dl");d.className=wide?"wide":"";d.innerHTML=h;d.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>d.close());if(!d.open)d.showModal();const f=d.querySelector("input:not([type=file]),textarea");if(f&&!matchMedia("(max-width:600px)").matches)f.focus()};
+const head=(t,s)=>`<div class="dh"><button class="dx" data-close aria-label="Close" type="button">&times;</button><h2>${t}</h2>${s?`<p>${s}</p>`:""}</div>`;
+const phoneOk=v=>/^(254|0|\+254)[17]\d{8}$/.test(String(v||"").replace(/\s+/g,""));
+const pwField=(n,l,ac)=>`<label>${l}<span class="pw"><input name="${n}" type="password" required minlength="8" autocomplete="${ac}"><button type="button" data-eye>Show</button></span></label>`;
+const sel=(l,n,a,req,v="")=>`<label>${l}<select name="${n}" ${req?"required":""}><option value="">Choose…</option>${a.map(o=>{const [k,t]=Array.isArray(o)?o:[o,o];return `<option value="${esc(k)}" ${String(k)===String(v)?"selected":""}>${esc(t)}</option>`}).join("")}</select></label>`;
+document.addEventListener("click",e=>{const b=e.target.closest("[data-eye]");if(b){const i=b.previousElementSibling,s=i.type==="password";i.type=s?"text":"password";b.textContent=s?"Hide":"Show"}});
+async function upload(file,tag,max=3e6){if(!file)return null;if(!/^image\//.test(file.type)||file.size>max)throw new Error("The picture must be an image under "+Math.round(max/1e6)+" MB.");
+ const ext=(file.name.split(".").pop()||"png").toLowerCase().replace(/[^a-z0-9]/g,"")||"png",path=`${U.id}/${tag}-${Date.now()}.${ext}`;
+ const up=await sb.storage.from("listing-images").upload(path,file,{contentType:file.type});if(up.error)throw up.error;return sb.storage.from("listing-images").getPublicUrl(path).data.publicUrl}
+
+/* ---------- header and side navbar ---------- */
+function header(){
+ if(!U){$("#nv").innerHTML='<a href="#home" data-site>Home</a><a href="#about" data-site>About Us</a><a href="#why" data-site>Why Work With Us</a><a href="#blogs" data-site>Blogs</a>';
+  $("#acct").innerHTML=`<button class="ib" data-do="login" type="button" aria-label="Log in">${I.user}<span>Login</span></button><button class="btn p s" data-do="signup" type="button">Sign Up</button>`;return}
+ $("#nv").innerHTML=`<button type="button" data-v="site" class="${VIEW==="site"?"on":""}">Home</button><a href="#blogs" data-site>Blogs</a>`;
+ $("#acct").innerHTML=`${AG?`<button class="wl" data-do="wallet" type="button" aria-label="Wallet, withdraw only">${I.wallet}<b>${kes(BAL)}</b><small>Withdraw</small></button>`:""}<button class="ib" data-v="dash" type="button" aria-label="My dashboard">${I.user}<span>${esc(((AG&&AG.full_name)||(U.user_metadata&&U.user_metadata.full_name)||(U.email||"Me").split("@")[0]).trim().split(" ")[0])}</span></button><button class="ib" data-do="logout" type="button" aria-label="Log out">${I.out}<span>Log out</span></button>`}
+function side(){const nm=AG?AG.full_name:U.email,ph=PROF&&PROF.photo_url;
+ $("#side").innerHTML=`<div class="sbrand"><img src="logo.png" alt=""><div><b>SOKO Smart</b><small>AGENT PORTAL</small></div></div><div class="who"><span class="av">${ph?`<img alt="" src="${esc(ph)}">`:esc((nm||"A").trim().charAt(0).toUpperCase())}</span><div title="${esc(nm)}"><b>${esc(nm)}</b><small>SOKO Smart agent</small></div></div>`+NAVS.map(([k,l])=>`<button class="nb ${VIEW===k?"on":""}" data-v="${k}" type="button">${I[k]}${l}</button>`).join("")+`<div class="sq"><span class="tr">${SV('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a2 2 0 0 0 0 4h3M16 6h3a2 2 0 0 1 0 4h-3M12 13v4M8 20h8M9.5 17h5"/>',26)}</span><p>“Every customer you bring helps a Kenyan business grow.”</p></div>`}
+function show(v){VIEW=v;$("#site").hidden=v!=="site";$("#app").hidden=v==="site";header();if(v!=="site"){side();drawApp()}scrollTo({top:0})}
+
+/* ---------- data ---------- */
+async function loadAgent(){SETUP="";AG=null;BAL=0;CUST=[];TX=[];SHOPS=[];PROF=null;PORT=[];BADGES=[];MINE=new Map();if(!sb||!U)return;
+ const a=await sb.from("agents").select("*").eq("user_id",U.id).maybeSingle();
+ if(a.error){SETUP=help(a.error.message);return}AG=a.data;if(!AG)return;
+ try{await sb.rpc("agent_check_badges")}catch(e){}
+ const [w,c,t,s,p,po,b,ub,mc]=await Promise.all([
+  sb.from("agent_wallet").select("balance").eq("agent_id",U.id).maybeSingle(),
+  sb.from("agent_customers").select("*").eq("agent_id",U.id).order("created_at",{ascending:false}).limit(500),
+  sb.from("agent_wallet_tx").select("*").eq("agent_id",U.id).order("created_at",{ascending:false}).limit(1000),
+  sb.from("shop_applications").select("id,shop_name,full_name,email,phone,county,town,status,created_at").eq("agent_id",U.id).order("created_at",{ascending:false}).limit(300),
+  sb.from("agent_profile").select("*").eq("agent_id",U.id).maybeSingle(),
+  sb.from("agent_portfolio").select("*").eq("agent_id",U.id).order("created_at",{ascending:false}).limit(60),
+  sb.from("badges").select("*").eq("category","agent").eq("active",true).order("sort_order"),
+  sb.from("user_badges").select("badge_id,awarded_at,note").eq("user_id",U.id),
+  sb.from("main_categories").select("id,name").eq("section","shops").order("sort_order")]);
+ BAL=+(w.data&&w.data.balance)||0;CUST=c.data||[];TX=t.data||[];SHOPS=s.data||[];PROF=p.data||null;PORT=po.data||[];BADGES=b.data||[];MINE=new Map((ub.data||[]).map(x=>[x.badge_id,x]));MAINS=mc.data||[]}
+async function register(){const m=U.user_metadata||{};const r=await sb.rpc("agent_register",{p_name:m.full_name||"",p_phone:m.phone||""});return r.error?help(r.error.message):""}
+async function init(){U=null;try{if(sb){const s=(await sb.auth.getSession()).data.session;U=s&&s.user}}catch(e){}
+ if(U){await loadAgent();if(!AG&&!SETUP&&U.user_metadata&&U.user_metadata.is_agent){await register();await loadAgent()}}
+ if(!U)VIEW="site";else if(VIEW==="site"&&!init.once&&!location.hash.match(/^#(home|about|why|blogs)$/))VIEW="dash";init.once=1;show(VIEW);hashAction()}
+function hashAction(){const h=location.hash;if(h==="#login"&&!U)loginDlg();else if(h==="#signup"&&!U)signupDlg();else if(h==="#dash"&&U)show("dash");else return;history.replaceState(null,"",location.pathname)}
+
+/* ---------- views ---------- */
+const refLink=()=>AG?new URL("index.html?ref="+AG.referral_code,location.href).href:"";
+const ST={awaiting_payment:["Waiting for payment","p"],pending:["Awaiting approval","p"],approved:["Shop opened",""],rejected:["Rejected","x"]};
+const stP=s=>{const x=ST[s]||[s,"p"];return `<span class="pill ${x[1]}">${esc(x[0])}</span>`};
+const opened=()=>SHOPS.filter(s=>s.status==="approved").length;
+function drawApp(){const c=$("#appc");
+ if(SETUP){c.innerHTML=`<div class="msg">${esc(SETUP)}</div>`;return}
+ if(!AG){if(drawApp.t!==U.id){drawApp.t=U.id;c.innerHTML='<div class="pn"><p class="m">Setting up your agent account…</p></div>';register().then(async m=>{if(m){c.innerHTML=`<div class="msg">${esc(m)}</div>`;return}await loadAgent();show(VIEW)})}else c.innerHTML='<div class="msg">We could not load your agent account. Please reload the page.</div>';return}
+ ({dash,refs,pprod:c=>promo(c,"pprod"),pshop:c=>promo(c,"pshop"),psvc:c=>promo(c,"psvc"),perf,wd,prof:portfolio,help:helpPage,cust:refs,shops:refs,port:portfolio,ach:perf})[VIEW](c)}
+/* ---- dashboard (analytics layout) ---- */
+const PAL=["#F58E20","#0B4A2E","#14633F","#A7C28B","#FFC766","#D9740A"];
+function donut(parts,total,center,sub){const tot=parts.reduce((a,p)=>a+p.v,0),R=15.9155;let off=25,segs="";
+ if(!tot)segs=`<circle cx="21" cy="21" r="${R}" fill="none" stroke="#efe9dc" stroke-width="6"/>`;
+ else parts.forEach(p=>{const d=p.v/tot*100;if(d>0){segs+=`<circle cx="21" cy="21" r="${R}" fill="none" stroke="${p.c}" stroke-width="6" stroke-dasharray="${d} ${100-d}" stroke-dashoffset="${off}"/>`;off-=d}});
+ return `<div class="dn"><svg viewBox="0 0 42 42" role="img" aria-label="${esc(center+" "+sub)}">${segs}</svg><div class="dc"><b>${esc(center)}</b><span>${esc(sub)}</span></div></div>`}
+const spark=(a,c)=>{const mx=Math.max(1,...a),w=84,h=24,pts=a.map((v,i)=>`${(i/(a.length-1||1)*w).toFixed(1)},${(h-2-v/mx*(h-4)).toFixed(1)}`).join(" ");return `<svg class="sp" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" aria-hidden="true"><polyline points="${pts}" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`};
+function months(n){const M=[],d0=new Date;for(let i=n-1;i>=0;i--){const m=new Date(d0.getFullYear(),d0.getMonth()-i,1);M.push({y:m.getFullYear(),m:m.getMonth(),l:m.toLocaleDateString("en-KE",{month:"short"}),f:m.toLocaleDateString("en-KE",{month:"long",year:"numeric"}),c:0,s:0,e:0})}
+ const at=(d)=>{d=new Date(d);return M.find(z=>z.y===d.getFullYear()&&z.m===d.getMonth())};
+ CUST.forEach(x=>{const b=at(x.created_at);if(b)b.c++});SHOPS.filter(s=>s.status==="approved").forEach(x=>{const b=at(x.created_at);if(b)b.s++});
+ TX.filter(t=>t.kind==="earn"&&t.status==="completed").forEach(t=>{const b=at(t.created_at);if(b)b.e+=+t.amount||0});return M}
+const delta=(a,b)=>{if(!b)return a?`<i class="up">▲ new</i>`:`<i>no change</i>`;const p=Math.round((a-b)/b*100);return `<i class="${p>=0?"up":"dn2"}">${p>=0?"▲":"▼"} ${Math.abs(p)}% vs last month</i>`};
+function dash(c){
+ const M=months(6),cur=M[5],prev=M[4],earned=TX.filter(t=>t.kind==="earn"&&t.status==="completed").reduce((a,t)=>a+(+t.amount||0),0),op=opened(),
+  viaLink=CUST.filter(x=>x.source==="referral").length,manual=CUST.length-viaLink,live=op,wait=SHOPS.filter(s=>s.status==="awaiting_payment"||s.status==="pending").length,rej=SHOPS.filter(s=>s.status==="rejected").length,
+  rate=CUST.length?Math.round(op/CUST.length*100):0,mx=Math.max(1,...M.map(z=>Math.max(z.c,z.s))),yr=new Date().getFullYear(),
+  K=[["k1",I.refs,"TOTAL CUSTOMERS",CUST.length.toLocaleString("en-KE"),delta(cur.c,prev.c)],["k2",I.shops,"SHOPS OPENED",op.toLocaleString("en-KE"),`<i>${SHOPS.length} in total</i>`],["k3",I.wallet,"TOTAL EARNED",kes(earned),delta(cur.e,prev.e)],["k4",I.wd,"WALLET BALANCE",kes(BAL),`<i>Min. withdrawal ${kes(MIN)}</i>`],["k5",I.perf,"CONVERSION",rate+"%",`<i>${op} shops from ${CUST.length} customers</i>`]];
+ c.innerHTML=`<div class="dh2"><div><h1>OVERVIEW <small>Performance at a Glance</small></h1><p class="m">Welcome back, ${esc((AG.full_name||"").split(" ")[0])}. Code <b>${esc(AG.referral_code)}</b></p></div>
+  <div class="dctl"><label class="sel"><span>Year</span><select id="dyr" aria-label="Year"><option>${yr}</option></select></label><label class="sel"><span>Period</span><select id="dpd" aria-label="Period"><option>Last 6 months</option></select></label><button class="pbtn" id="dprint" type="button" aria-label="Print">${SV('<path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v7H6z"/>',20)}</button></div></div>
+  <div class="kp">${K.map(k=>`<div class="kc ${k[0]}"><span class="ki">${k[1]}</span><div><small>${k[2]}</small><b>${k[3]}</b>${k[4]}</div></div>`).join("")}</div>
+  <div class="dg">
+   <section class="cd2 a"><h2>Referral summary</h2><div class="dr">${donut([{v:viaLink,c:PAL[0]},{v:manual,c:PAL[1]},{v:wait,c:PAL[4]},{v:live,c:PAL[2]}].slice(0,4),0,String(CUST.length+SHOPS.length),"TOTAL")}<ul class="lgd"><li><i style="background:${PAL[0]}"></i>Customers via link<b>${viaLink}</b></li><li><i style="background:${PAL[1]}"></i>Customers added by me<b>${manual}</b></li><li><i style="background:${PAL[4]}"></i>Shops not live yet<b>${wait}</b></li><li><i style="background:${PAL[2]}"></i>Shops opened<b>${live}</b></li></ul></div></section>
+   <section class="cd2 b"><h2>New customers &amp; shops by month</h2><div class="lg2"><span><i class="a"></i> Customers</span><span><i class="b"></i> Shops opened</span></div><div class="bars" role="img" aria-label="New customers and shops opened in each of the last 6 months">${M.map(z=>`<div class="bc"><div class="bb"><i class="a" style="height:${Math.round(z.c/mx*100)}%" title="${z.c} customers"><em>${z.c||""}</em></i><i class="b" style="height:${Math.round(z.s/mx*100)}%" title="${z.s} shops"><em>${z.s||""}</em></i></div><span>${z.l}</span></div>`).join("")}</div></section>
+   <section class="cd2 c"><h2>${SV('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a2 2 0 0 0 0 4h3M16 6h3a2 2 0 0 1 0 4h-3M12 13v4M8 20h8"/>',18)} Recent customers</h2>${CUST.length?`<ol class="tp">${CUST.slice(0,5).map((x,i)=>`<li><span class="rk r${i+1}">${i+1}</span><b>${esc(x.name)}</b><em>${esc(dt(x.created_at))}</em></li>`).join("")}</ol><button class="btn s" data-v="refs" type="button" style="margin-top:8px">View all</button>`:'<p class="empty">No customers yet. Share your link below.</p>'}</section>
+   <section class="cd2 d"><h2>Monthly performance</h2><div class="tw"><table class="mt"><thead><tr><th>Month</th><th>Customers</th><th>Shops opened</th><th>Earned</th><th>Trend</th></tr></thead><tbody>${M.slice().reverse().map((z,i,a)=>{const k=5-i,tr=M.slice(Math.max(0,k-3),k+1).map(m=>m.c+m.s);return `<tr><td><b>${esc(z.f)}</b></td><td>${z.c}</td><td>${z.s}</td><td>${kes(z.e)}</td><td>${spark(tr.length>1?tr:[0,...tr],k&&M[k].c+M[k].s<M[k-1].c+M[k-1].s?"#b3261e":"#14633F")}</td></tr>`}).join("")}</tbody></table></div></section>
+   <section class="cd2 e"><h2>Shop status</h2><div class="dr">${donut([{v:live,c:PAL[2]},{v:wait,c:PAL[0]},{v:rej,c:"#b3261e"}],0,rate+"%","CONVERSION")}<ul class="lgd"><li><i style="background:${PAL[2]}"></i>Opened<b>${live}</b></li><li><i style="background:${PAL[0]}"></i>Waiting<b>${wait}</b></li><li><i style="background:#b3261e"></i>Rejected<b>${rej}</b></li></ul></div></section>
+   <section class="cd2 f"><div><h3>Keep up the great work!</h3><p>Share your link and open shops to grow your earnings.</p><div class="ref"><input id="rl" readonly value="${esc(refLink())}" aria-label="Referral link"><button class="btn o s" id="cp" type="button">${I.copy} Copy</button></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button class="btn s" id="ac" type="button">+ Add customer</button><button class="btn s" id="os" type="button">+ Open a shop</button></div></div></section>
+  </div>
+  <section class="cd2" style="margin-top:16px"><h2>Wallet activity</h2>${txList(TX.slice(0,6))}</section>
+  <p class="foot m">Data updated ${esc(new Date().toLocaleDateString("en-KE",{day:"numeric",month:"long",year:"numeric"}))} · Source: SOKO Smart agent records</p>`}
+document.addEventListener("click",e=>{if(e.target.closest("#dprint"))print()});
+const txList=a=>a.length?`<div class="tw"><table><thead><tr><th>Date</th><th>Details</th><th>Amount</th><th>Status</th></tr></thead><tbody>${a.map(t=>`<tr><td>${esc(dt(t.created_at))}</td><td>${t.kind==="earn"?esc(t.note||"Earnings"):"Withdrawal to "+esc(t.phone||"M-Pesa")}</td><td><b>${t.kind==="earn"?"+":"−"}${kes(t.amount)}</b></td><td><span class="pill ${t.status==="pending"?"p":t.status==="rejected"?"x":""}">${t.status==="completed"?(t.kind==="earn"?"Credited":"Paid"):t.status==="pending"?"Pending":"Rejected"}</span></td></tr>`).join("")}</tbody></table></div>`:'<p class="empty">Nothing yet. Your earnings and withdrawals will show here.</p>';
+const joined=x=>x.source==="referral"?"Referral link":"Added by me";
+const custTable=(a,del)=>a.length?`<div class="tw"><table><thead><tr><th>Name</th><th>Phone</th><th>Email</th><th>How they joined</th><th>Date</th>${del?"<th></th>":""}</tr></thead><tbody>${a.map(x=>`<tr><td><b>${esc(x.name)}</b>${x.note?`<div class="m">${esc(x.note)}</div>`:""}</td><td>${esc(x.phone||"—")}</td><td>${esc(x.email||"—")}</td><td><span class="pill ${x.source==="referral"?"":"p"}">${joined(x)}</span>${x.heard_from?`<div class="m">${esc(x.heard_from)}</div>`:""}</td><td>${esc(dt(x.created_at))}</td>${del?`<td>${x.source==="manual"?`<button class="btn s d" data-cd="${esc(x.id)}" type="button">Remove</button>`:""}</td>`:""}</tr>`).join("")}</tbody></table></div>`:'<p class="empty">No customers yet. Share your referral link or add one yourself.</p>';
+const shopTable=a=>a.length?`<div class="tw"><table><thead><tr><th>Shop</th><th>Owner</th><th>Location</th><th>Status</th><th>Date</th></tr></thead><tbody>${a.map(x=>`<tr><td><b>${esc(x.shop_name)}</b></td><td>${esc(x.full_name||"")}<div class="m">${esc(x.email||"")}</div></td><td>${esc([x.town,x.county].filter(Boolean).join(", "))}</td><td>${stP(x.status)}</td><td>${esc(dt(x.created_at))}</td></tr>`).join("")}</tbody></table></div>`:'<p class="empty">No shops yet. Press “+ Open a shop” to set one up for a customer.</p>';
+let CQ="";
+function custs(c){const L=CUST.filter(x=>!CQ||[x.name,x.phone,x.email].join(" ").toLowerCase().includes(CQ));
+ c.innerHTML=`<div class="ph"><h1>Customers</h1><p>${CUST.length} customer${CUST.length===1?"":"s"} you brought to SOKO Smart.</p></div><div class="pn"><div class="tb"><input id="cq" type="search" placeholder="Search by name, phone or email" aria-label="Search customers" value="${esc(CQ)}"><button class="btn p" id="ac" type="button">+ Add customer</button></div>${L.length||!CUST.length?custTable(L,1):'<p class="empty">No customer matches your search.</p>'}</div>`;
+ const q=$("#cq");q.oninput=()=>{CQ=q.value.trim().toLowerCase();const p=q.selectionStart;custs($("#appc"));const n=$("#cq");n.focus();n.setSelectionRange(p,p)}}
+function shops(c){const n=k=>SHOPS.filter(s=>s.status===k).length;
+ c.innerHTML=`<div class="ph"><h1>Shop Opened</h1><p>Shops you set up for customers. A shop goes live once its owner pays for a package.</p></div>
+ <div class="st"><div class="sc2 o"><b>${opened()}</b><span>Shops opened</span></div><div class="sc2"><b>${n("awaiting_payment")}</b><span>Waiting for payment</span></div><div class="sc2"><b>${n("pending")}</b><span>Awaiting approval</span></div></div>
+ <div class="pn"><div class="tb" style="justify-content:space-between"><h2 style="margin:0">Your shops</h2><button class="btn p" id="os" type="button">+ Open a shop</button></div>${shopTable(SHOPS)}</div>`}
+function portfolio(c){const p=PROF||{};
+ c.innerHTML=`<div class="ph"><h1>My Profile</h1><p>Your account details, how customers see you, and the work you have done as a SOKO Smart agent.</p></div>
+ <div class="pn"><h2>Account</h2><div class="st" style="margin:0"><div class="sc2"><b style="font-size:18px">${esc(AG.full_name||"—")}</b><span>Name</span></div><div class="sc2"><b style="font-size:18px;overflow-wrap:anywhere">${esc(AG.email||U.email||"—")}</b><span>Email</span></div><div class="sc2"><b style="font-size:18px">${esc(AG.phone||"—")}</b><span>Phone</span></div><div class="sc2"><b style="font-size:18px">${esc(AG.referral_code)}</b><span>Referral code</span></div></div></div>
+ <div class="pn"><h2>Your profile</h2><form class="fm" id="pf" novalidate><div class="prf"><div class="ph2" id="pfp">${p.photo_url?`<img alt="" src="${esc(p.photo_url)}">`:esc((AG.full_name||"A").charAt(0).toUpperCase())}</div><div class="fm"><label>Profile photo<input name="ph" type="file" accept="image/*"><span class="m">A clear photo under 3 MB.</span></label></div></div>
+ <label>Headline<input name="hl" maxlength="100" value="${esc(p.headline||"")}" placeholder="e.g. Helping Nairobi traders sell online"></label>
+ ${sel("County","co",COUNTIES,false,p.county||"")}<label>About you<textarea name="bio" rows="4" maxlength="800" placeholder="Tell customers about your experience and how you help.">${esc(p.bio||"")}</textarea></label>
+ <div class="er" id="pfe" role="alert"></div><button class="btn p" id="pfg" style="width:fit-content">Save profile</button></form></div>
+ <div class="pn"><div class="tb" style="justify-content:space-between"><h2 style="margin:0">Portfolio items</h2><button class="btn p" id="ap" type="button">+ Add item</button></div>
+ ${PORT.length?`<div class="sg">${PORT.map(x=>`<div class="pc"><div class="im">${x.image_url?`<img loading="lazy" alt="" src="${esc(x.image_url)}">`:I.port}</div><div class="tx"><h3>${esc(x.title)}</h3><p>${esc(x.description||"")}</p><div><button class="btn s d" data-pd="${esc(x.id)}" type="button">Remove</button></div></div></div>`).join("")}</div>`:'<p class="empty">No items yet. Add a shop you helped open, a success story or a certificate.</p>'}</div>`}
+const first=n=>String(n||"").split(" ")[0];
+function achievements(c){
+ if(!window.SokoBadges){c.innerHTML='<div class="msg">Badges could not load. Check that badges.js is uploaded.</div>';return}
+ const pts=BADGES.filter(b=>MINE.has(b.id)).reduce((a,b)=>a+(+b.points||0),0),L=SokoBadges.level(pts);
+ const tipE=b=>({title:"Why you earned this",text:b.description||"",extra:"+"+b.points+" XP · On "+dt(MINE.get(b.id).awarded_at)}),tipL=b=>({title:"How to earn it",text:b.description||"",extra:"+"+b.points+" XP"});
+ const E=BADGES.filter(b=>MINE.has(b.id)),N=BADGES.filter(b=>!MINE.has(b.id));
+ c.innerHTML=`<div class="ph"><h1>Achievements</h1><p>Badges you earn as an agent.</p></div>
+ <div class="lv">${SokoBadges.coin(L.index,84)}<div class="xp"><h2>${esc(L.name)}</h2><p>Level ${L.index} of 5 · ${pts.toLocaleString("en-KE")} XP</p><div class="bar2" role="progressbar" aria-valuenow="${L.pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${L.pct}%"></i></div><p>${L.next?`${L.toNext.toLocaleString("en-KE")} XP to ${esc(L.next)}`:"You have reached the top level. Thank you!"}</p></div></div>
+ <div class="pn"><h2>Earned badges</h2>${E.length?`<div class="bgg2">${E.map(b=>`<div class="bdc">${SokoBadges.medal(b,{size:84,name:1,tip:tipE(b)})}<span class="m">${esc(b.description||"")}</span><span class="xpt">+${b.points} XP</span></div>`).join("")}</div>`:'<p class="empty">No badges yet. Add your first customer to earn one.</p>'}</div>
+ <div class="pn"><h2>Next achievements</h2>${N.length?`<div class="bgg2">${N.map(b=>`<div class="bdc lk">${SokoBadges.medal(b,{size:84,name:1,locked:1,tip:tipL(b)})}<span class="m">${esc(b.description||"")}</span><span class="xpt">+${b.points} XP</span></div>`).join("")}</div>`:'<p class="empty">Nothing left. Well done!</p>'}</div>`}
+
+/* ---------- agent menu pages: My Referrals, Promote, Performance, Withdrawal History, Support & Help ---------- */
+/* Edit these two to match your site. Promote links get ?ref=YOUR_CODE added automatically. */
+const PROMO_PATHS={product:"product.html?s=products&id=",shop:"product.html?s=shops&id=",service:"servicehub.html#services"};
+const SUPPORT={email:"support@sokosmart.co.ke",whatsapp:""};
+const agLink=p=>{try{const u=new URL(p,location.href);u.searchParams.set("ref",AG.referral_code);return u.href}catch(e){return refLink()}};
+const refBox=()=>`<div class="pn"><h2>Your referral link</h2><p class="m" style="margin:0 0 10px">Anyone who joins SOKO Smart through your link is added to your referrals. Your code is <b>${esc(AG.referral_code)}</b>.</p><div class="ref"><input id="rl" readonly value="${esc(refLink())}" aria-label="Referral link"><button class="btn p" id="cp" type="button">${I.copy} Copy link</button></div></div>`;
+
+let RQ="";
+function refs(c){const L=CUST.filter(x=>!RQ||[x.name,x.phone,x.email].join(" ").toLowerCase().includes(RQ)),n=k=>SHOPS.filter(s=>s.status===k).length,viaLink=CUST.filter(x=>x.source==="referral").length;
+ c.innerHTML=`<div class="ph"><h1>My Referrals</h1><p>The customers and shops you have brought to SOKO Smart.</p></div>
+ <div class="st"><div class="sc2 o"><b>${CUST.length}</b><span>Customers</span></div><div class="sc2"><b>${viaLink}</b><span>Joined by your link</span></div><div class="sc2"><b>${opened()}</b><span>Shops opened</span></div><div class="sc2"><b>${n("awaiting_payment")+n("pending")}</b><span>Shops not live yet</span></div></div>
+ ${refBox()}
+ <div class="pn"><div class="tb"><input id="cq" type="search" placeholder="Search by name, phone or email" aria-label="Search customers" value="${esc(RQ)}"><button class="btn p" id="ac" type="button">+ Add customer</button></div>${L.length||!CUST.length?custTable(L,1):'<p class="empty">No customer matches your search.</p>'}</div>
+ <div class="pn"><div class="tb" style="justify-content:space-between"><h2 style="margin:0">Shops you opened</h2><button class="btn p" id="os" type="button">+ Open a shop</button></div>${shopTable(SHOPS)}</div>`;
+ const q=$("#cq");q.oninput=()=>{RQ=q.value.trim().toLowerCase();const p=q.selectionStart;refs($("#appc"));const z=$("#cq");z.focus();z.setSelectionRange(p,p)}}
+
+const PCFG={
+ pprod:{title:"Promote Products",noun:"product",lead:"Products from shops in the Agency. Share a product link and earn the commission the shop has set when the sale is completed.",table:"agency_products",cols:"id,title,price,cover_url,shop_name,commission_pct,commission_kes",filter:q=>q,name:x=>x.title,sub:x=>[x.shop_name,x.price!=null?kes(x.price):"",x.commission_pct!=null?"Earn "+(+x.commission_pct)+"% ("+kes(x.commission_kes)+")":""].filter(Boolean).join(" · "),img:x=>x.cover_url,link:x=>agLink(PROMO_PATHS.product+encodeURIComponent(x.id))},
+ pshop:{title:"Promote Shops",noun:"shop",lead:"Shops that joined the Agency. Share a shop's page with your link to bring shoppers to it.",table:"agency_shops",cols:"id,name,logo_url,county,town",filter:q=>q,name:x=>x.name,sub:x=>[x.town,x.county].filter(Boolean).join(", "),img:x=>x.logo_url,link:x=>agLink(PROMO_PATHS.shop+encodeURIComponent(x.id))},
+ psvc:{title:"Promote Services",noun:"service",lead:"Share a service from the Services page with your link.",table:"sh_services",cols:"id,title,image_url,base_price,max_price",filter:q=>q.eq("active",true),name:x=>x.title,sub:x=>x.base_price!=null?"From "+kes(x.base_price):"",img:x=>x.image_url,link:x=>agLink(PROMO_PATHS.service)}};
+const PR={},PQ={};
+async function promoLoad(k){if(PR[k])return;const P=PCFG[k];
+ let r=await P.filter(sb.from(P.table).select(P.cols)).order("created_at",{ascending:false}).limit(80);
+ if(r.error)r=await P.filter(sb.from(P.table).select(P.cols)).limit(80);
+ PR[k]=r.error?{err:help(r.error.message),rows:[]}:{rows:r.data||[]}}
+function promo(c,k){const P=PCFG[k];
+ c.innerHTML=`<div class="ph"><h1>${P.title}</h1><p>${P.lead}</p></div>${refBox()}<div class="pn"><div class="tb"><input id="pq" type="search" placeholder="Search ${P.noun}s" aria-label="Search ${P.noun}s" value="${esc(PQ[k]||"")}"></div><div id="pl"><p class="m">Loading…</p></div></div>`;
+ const draw=()=>{const el=$("#pl");if(!el||VIEW!==k)return;const d=PR[k];
+  if(d.err){el.innerHTML=`<div class="msg">${esc(d.err)}</div>`;return}
+  const q=(PQ[k]||"").toLowerCase(),L=d.rows.filter(x=>!q||(P.name(x)||"").toLowerCase().includes(q));
+  el.innerHTML=L.length?`<div class="sg">${L.map(x=>{const u=P.link(x),n=P.name(x)||"";return `<div class="pc"><div class="im">${P.img(x)?`<img loading="lazy" alt="" src="${esc(P.img(x))}">`:I[k]}</div><div class="tx"><h3>${esc(n)}</h3><p>${esc(P.sub(x))}</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><button class="btn s p" data-cl="${esc(u)}" type="button">Copy link</button><a class="btn s" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(n+" on SOKO Smart: "+u)}">WhatsApp</a></div></div></div>`}).join("")}</div>`:`<p class="empty">${d.rows.length?"Nothing matches your search.":"No "+P.noun+"s to promote yet."}</p>`};
+ promoLoad(k).then(draw);
+ const q=$("#pq");q.oninput=()=>{PQ[k]=q.value.trim();draw()}}
+
+function perf(c){
+ const M=[],d0=new Date;for(let i=5;i>=0;i--){const m=new Date(d0.getFullYear(),d0.getMonth()-i,1);M.push({y:m.getFullYear(),m:m.getMonth(),l:m.toLocaleDateString("en-KE",{month:"short"}),c:0,s:0})}
+ const put=(rows,key)=>rows.forEach(x=>{const d=new Date(x.created_at),b=M.find(z=>z.y===d.getFullYear()&&z.m===d.getMonth());if(b)b[key]++});
+ put(CUST,"c");put(SHOPS.filter(s=>s.status==="approved"),"s");
+ const mx=Math.max(1,...M.map(z=>Math.max(z.c,z.s))),sum=f=>TX.filter(f).reduce((a,t)=>a+(+t.amount||0),0),
+  earned=sum(t=>t.kind==="earn"&&t.status==="completed"),paid=sum(t=>t.kind!=="earn"&&t.status==="completed"),viaLink=CUST.filter(x=>x.source==="referral").length,
+  rate=CUST.length?Math.round(opened()/CUST.length*100):0,thisM=M[M.length-1];
+ c.innerHTML=`<div class="ph"><h1>Performance</h1><p>How your referrals and earnings are growing.</p></div>
+ <div class="st"><div class="sc2 o"><b>${kes(earned)}</b><span>Total earned</span></div><div class="sc2"><b>${kes(paid)}</b><span>Withdrawn so far</span></div><div class="sc2"><b>${kes(BAL)}</b><span>In your wallet</span></div>
+ <div class="sc2"><b>${CUST.length}</b><span>Customers (${thisM.c} this month)</span></div><div class="sc2"><b>${opened()}</b><span>Shops opened (${thisM.s} this month)</span></div><div class="sc2"><b>${rate}%</b><span>Shops opened per customer</span></div></div>
+ <div class="pn"><h2>Last 6 months</h2><div class="lg2"><span><i class="a"></i> New customers</span><span><i class="b"></i> Shops opened</span></div>
+  <div class="bars" role="img" aria-label="New customers and shops opened in each of the last 6 months">${M.map(z=>`<div class="bc"><div class="bb"><i class="a" style="height:${Math.round(z.c/mx*100)}%"></i><i class="b" style="height:${Math.round(z.s/mx*100)}%"></i></div><span>${z.l}</span><small>${z.c} / ${z.s}</small></div>`).join("")}</div></div>
+ <div class="pn"><h2>Where your customers come from</h2><p style="margin:0">${viaLink} joined through your referral link · ${CUST.length-viaLink} you added yourself</p></div>
+ <div id="pfa"></div>`;
+ achievements($("#pfa"))}
+
+function wd(c){const W=TX.filter(t=>t.kind!=="earn"),sum=s=>W.filter(t=>t.status===s).reduce((a,t)=>a+(+t.amount||0),0),lab={completed:"Paid",pending:"Pending",rejected:"Rejected"};
+ c.innerHTML=`<div class="ph"><h1>Withdrawal History</h1><p>Every withdrawal you have requested.</p></div>
+ <div class="st"><div class="sc2 o"><b>${kes(BAL)}</b><span>Available to withdraw</span></div><div class="sc2"><b>${kes(sum("completed"))}</b><span>Paid to your M-Pesa</span></div><div class="sc2"><b>${kes(sum("pending"))}</b><span>Waiting to be paid</span></div></div>
+ <div class="pn"><div class="tb" style="justify-content:space-between"><h2 style="margin:0">Withdrawals</h2><button class="btn p" data-do="wallet" type="button">Withdraw</button></div>
+ ${W.length?`<div class="tw"><table><thead><tr><th>Date</th><th>M-Pesa number</th><th>Amount</th><th>Status</th></tr></thead><tbody>${W.map(t=>`<tr><td>${esc(dt(t.created_at))}</td><td>${esc(t.phone||"—")}</td><td><b>${kes(t.amount)}</b></td><td><span class="pill ${t.status==="pending"?"p":t.status==="rejected"?"x":""}">${esc(lab[t.status]||t.status)}</span>${t.status==="rejected"?'<div class="m">Returned to your wallet</div>':""}</td></tr>`).join("")}</tbody></table></div>`:'<p class="empty">No withdrawals yet. When your wallet has at least '+kes(MIN)+', press Withdraw.</p>'}</div>`}
+
+function helpPage(c){
+ const F=[["How do I earn on SOKO Smart?","You are rewarded for the business you bring in: customers who join through your referral link or whom you register, and shops you open. Your earnings are credited to your agent wallet."],
+ ["How do my referrals get counted?","Share your referral link or a Promote link. Anyone who joins through it is added to My Referrals automatically. You can also register a customer yourself from My Referrals."],
+ ["How do I open a shop for someone?","Go to My Referrals and press “+ Open a shop”. The shop is saved as waiting for payment. Its owner logs in with the email you entered, chooses a package and pays by M-Pesa to make it live."],
+ ["How do I withdraw my money?","Open Withdrawal History or press the wallet button at the top, then enter the amount and your M-Pesa number. The minimum is "+kes(MIN)+". The SOKO Smart team sends the money to your M-Pesa. If a request is rejected, the money returns to your wallet."],
+ ["Where can I see my past withdrawals?","In Withdrawal History. Each one shows its date, amount, number and whether it is pending, paid or rejected."],
+ ["How do I change my photo or details?","Open My Profile. You can update your photo, headline, county and about text, and add portfolio items."]];
+ const mail=SUPPORT.email?`<a class="btn p" href="mailto:${esc(SUPPORT.email)}?subject=${encodeURIComponent("Agent support: "+(AG.referral_code||""))}">Email support</a>`:"",wa=SUPPORT.whatsapp?`<a class="btn" target="_blank" rel="noopener" href="https://wa.me/${esc(SUPPORT.whatsapp)}">WhatsApp</a>`:"";
+ c.innerHTML=`<div class="ph"><h1>Support &amp; Help</h1><p>Answers to common questions, and how to reach the SOKO Smart team.</p></div>
+ <div class="pn faq"><h2>Frequently asked questions</h2>${F.map(f=>`<details><summary>${esc(f[0])}</summary><p>${esc(f[1])}</p></details>`).join("")}</div>
+ <div class="pn"><h2>Still need help?</h2><p class="m" style="margin:0 0 12px">Contact the SOKO Smart team and mention your referral code <b>${esc(AG.referral_code)}</b>.</p><div style="display:flex;gap:8px;flex-wrap:wrap">${mail}${wa}</div></div>`}
+
+document.addEventListener("click",async e=>{const b=e.target.closest("[data-cl]");if(!b)return;
+ try{await navigator.clipboard.writeText(b.dataset.cl)}catch(x){const t=document.createElement("textarea");t.value=b.dataset.cl;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove()}
+ toast("Link copied. Share it with your customers.")});
+
+/* ---------- popups ---------- */
+function loginDlg(msg){popup(head("Welcome back","Log in to your agent account")+`<div class="db"><form class="fm" id="lf" novalidate><label>Email<input name="em" type="email" required autocomplete="email"></label>${pwField("pw","Password","current-password")}<div class="er" id="le" role="alert">${msg?esc(msg):""}</div><button class="btn p" id="lg" style="width:100%">Log in</button><div class="sw">New here? <button type="button" data-do="signup">Create an agent account</button></div></form></div>`)}
+function signupDlg(){popup(head("Become an agent","Create your free agent account")+`<div class="db"><form class="fm" id="sf" novalidate>
+ <label>Full name<input name="nm" required maxlength="80" autocomplete="name"></label>
+ <label>Email<input name="em" type="email" required autocomplete="email"><span class="m">We will send a link to this address to verify it.</span></label>
+ <label>Phone number<input name="ph" type="tel" required autocomplete="tel" placeholder="0712 345 678"></label>
+ ${pwField("pw","Password (at least 8 characters)","new-password")}${pwField("pc","Confirm password","new-password")}
+ <div class="er" id="se" role="alert"></div><button class="btn p" id="sg" style="width:100%">Create account</button><div class="sw">Already an agent? <button type="button" data-do="login">Log in</button></div></form></div>`)}
+function walletDlg(){popup(head("Agent wallet","Withdraw only. Your earnings come from the customers and business you bring.")+`<div class="db"><div class="sc2 o" style="margin-bottom:14px"><b>${kes(BAL)}</b><span>Available to withdraw</span></div>
+ <form class="fm" id="wf" novalidate><label>Amount (KSh)<input name="am" type="number" min="${MIN}" step="1" required placeholder="Minimum ${MIN}"></label><label>M-Pesa number<input name="ph" type="tel" required value="${esc(AG&&AG.phone||"")}" placeholder="0712 345 678"></label>
+ <p class="m" style="margin:0">The amount leaves your wallet now and the SOKO Smart team sends it to your M-Pesa. If a request is rejected, the money returns to your wallet.</p><div class="er" id="we" role="alert"></div><button class="btn p" id="wg" style="width:100%" ${BAL>=MIN?"":"disabled"}>Withdraw to M-Pesa</button></form>
+ <h3 style="font-size:16px;margin:16px 0 0">Recent activity</h3><div class="wh">${TX.slice(0,8).map(t=>`<div><span>${t.kind==="earn"?esc(t.note||"Earnings"):"Withdrawal"} · ${esc(dt(t.created_at))}</span><b>${t.kind==="earn"?"+":"−"}${kes(t.amount)} <span class="pill ${t.status==="pending"?"p":t.status==="rejected"?"x":""}">${t.status}</span></b></div>`).join("")||'<div class="m">Nothing yet.</div>'}</div></div>`)}
+function logoutDlg(){popup(head("Log out","Are you sure you want to log out?")+`<div class="db"><div style="display:flex;gap:10px"><button class="btn" data-close type="button" style="flex:1">Cancel</button><button class="btn p" data-do="logout2" type="button" style="flex:1">Yes, log out</button></div></div>`)}
+/* same details as the customer Sign Up page */
+function custDlg(){popup(head("Add a customer","Register them on SOKO Smart. They can log in with these details.")+`<div class="db"><form class="fm" id="cf" novalidate>
+ <label>Name<input name="nm" required maxlength="80" autocomplete="off"></label>
+ <label>Profile icon (optional)<input name="av" type="file" accept="image/*"><span class="m">A photo or logo under 2 MB.</span></label>
+ <label>Email<input name="em" type="email" required autocomplete="off"></label>
+ <label>Phone number<input name="ph" type="tel" required autocomplete="off" placeholder="0712 345 678"></label>
+ ${sel("How they heard about us","hh",HEARD,true)}${pwField("pw","Password (at least 8 characters)","new-password")}${pwField("pc","Confirm password","new-password")}
+ <div class="er" id="ce" role="alert"></div><button class="btn p" id="cg" style="width:100%">Register customer</button></form></div>`)}
+/* same details as the Open a Shop page */
+function shopDlg(){popup(head("Open a shop","Fill in the same details as the Open a Shop page")+`<div class="db"><form class="fm" id="sh" novalidate>
+ ${CUST.length?sel("Pick one of your customers (optional)","pick",CUST.map(c=>[c.id,c.name+(c.email?" · "+c.email:"")])):""}
+ <h3 style="font-size:16px;margin:4px 0 0">About the shop owner</h3>
+ <label>Full name<input name="fn" required maxlength="80"></label>
+ <div class="two"><label>Email<input name="em" type="email" required></label><label>Phone number<input name="ph" type="tel" required placeholder="0712 345 678"></label></div>
+ <h3 style="font-size:16px;margin:8px 0 0">The shop</h3>
+ <label>Shop name<input name="sn" required maxlength="80"></label>
+ ${MAINS.length?sel("Main category","mc",MAINS.map(m=>[m.id,m.name]),true):""}
+ <label>Shop logo (optional)<input name="lg" type="file" accept="image/*"><span class="m">An image under 2 MB; a square picture looks best.</span></label>
+ <h3 style="font-size:16px;margin:8px 0 0">Location details</h3>
+ <div class="two">${sel("County","co",COUNTIES,true)}<label>Town<input name="tw" required></label></div>
+ <label>Neighbourhood<input name="nb"></label>
+ <label>Street, building, floor or landmark<textarea name="dt" rows="3" required placeholder="e.g. Moi Avenue, Jubilee Building, 2nd floor, next to the bus stage"></textarea></label>
+ <p class="m" style="margin:0">The shop is saved as waiting for payment. Its owner logs in with this email, chooses a package and pays by M-Pesa to make it live.</p>
+ <div class="er" id="she" role="alert"></div><button class="btn p" id="shg" style="width:100%">Create shop</button></form></div>`,1)}
+function portDlg(){popup(head("Add a portfolio item","A shop you opened, a success story or a certificate")+`<div class="db"><form class="fm" id="pi" novalidate><label>Title<input name="ti" required maxlength="100"></label><label>Description<textarea name="de" rows="3" maxlength="500"></textarea></label><label>Picture (optional)<input name="im" type="file" accept="image/*"></label><div class="er" id="pie" role="alert"></div><button class="btn p" id="pig" style="width:100%">Save item</button></form></div>`)}
+
+/* ---------- Agency Blogs block (same design as the SOKO Smart blog) ---------- */
+let BL=[],BN=6,slT=null;
+const bUrl=b=>"agentblog.html?slug="+encodeURIComponent(b.slug||b.id);
+const card=b=>`<a class="bgc" href="${bUrl(b)}"><div class="im">${b.cover_url?`<img loading="lazy" alt="" src="${esc(b.cover_url)}">`:SV('<path d="M4 4h16v16H4zM8 9h8M8 13h8M8 17h5"/>',40)}</div><div class="cb"><span class="bt">Agency</span><h3>${esc(b.title)}</h3><p>${esc(b.excerpt||"")}</p><div class="ft"><span>${esc(dt(b.published_at||b.created_at))}</span><span class="rd">Read more →</span></div></div></a>`;
+function drawBlogs(){const el=$("#bl");
+ if(!BL.length){el.innerHTML='<p class="m">New posts for agents are coming soon.</p>';return}
+ const top=BL.slice(0,3),sd=BL.slice(3,6);
+ el.innerHTML=`<div class="hz" style="${sd.length?"":"grid-template-columns:1fr"}"><div class="hero2" id="hs">${top.map((b,i)=>`<a class="sl ${i?"":"on"}" href="${bUrl(b)}" aria-hidden="${i?"true":"false"}" ${i?'tabindex="-1"':""}><span class="bg">${b.cover_url?`<img alt="" ${i?'loading="lazy"':""} src="${esc(b.cover_url)}">`:""}</span><span class="ov"></span><span class="ct"><span class="bt o">Agency</span><h3>${esc(b.title)}</h3><p>${esc(b.excerpt||"")}</p><span class="m" style="color:#fff">${esc(dt(b.published_at||b.created_at))}</span><span class="rm">Read more</span></span></a>`).join("")}${top.length>1?`<div class="hdots">${top.map((_,i)=>`<button type="button" class="${i?"":"on"}" data-sl="${i}" aria-label="Show post ${i+1}"></button>`).join("")}<span class="cn">1 / ${top.length}</span></div>`:""}</div>
+ ${sd.length?`<div class="sdl">${sd.map(b=>`<a class="sd" href="${bUrl(b)}"><span class="th">${b.cover_url?`<img loading="lazy" alt="" src="${esc(b.cover_url)}">`:SV('<path d="M4 4h16v16H4z"/>',24)}</span><span class="tx"><b>${esc(b.title)}</b><small>${esc(dt(b.published_at||b.created_at))}</small></span></a>`).join("")}</div>`:""}</div>
+ <div class="btabs"><span>Latest posts</span></div><div class="bgg">${BL.slice(0,BN).map(card).join("")}</div>${BL.length>BN?'<div class="bgmore"><button class="btn" id="bm" type="button">Load more</button></div>':""}`;
+ let i=0;const sl=[...el.querySelectorAll(".sl")],dots=[...el.querySelectorAll("[data-sl]")];clearInterval(slT);
+ const cn=el.querySelector(".cn"),go=n=>{i=(n+sl.length)%sl.length;sl.forEach((s,k)=>{s.classList.toggle("on",k===i);s.setAttribute("aria-hidden",k===i?"false":"true");k===i?s.removeAttribute("tabindex"):s.setAttribute("tabindex","-1")});dots.forEach((d,k)=>d.classList.toggle("on",k===i));if(cn)cn.textContent=(i+1)+" / "+sl.length};
+ dots.forEach(d=>d.onclick=()=>go(+d.dataset.sl));if(sl.length>1&&!matchMedia("(prefers-reduced-motion:reduce)").matches){const hs=$("#hs");slT=setInterval(()=>go(i+1),6000);hs.onmouseenter=()=>clearInterval(slT);hs.onmouseleave=()=>{slT=setInterval(()=>go(i+1),6000)}}}
+async function blogs(){if(!sb){$("#bl").innerHTML='<p class="m">Blogs will appear here.</p>';return}
+ const r=await sb.from("agency_blogs").select("id,title,slug,excerpt,cover_url,published_at,created_at").eq("status","published").order("published_at",{ascending:false}).limit(30);if(r.error){BL=[];$("#bl").innerHTML=`<div class="msg">${esc(help(r.error.message))}</div>`;return}BL=r.data||[];drawBlogs()}
+/* About Us is controlled by the admin (Admin > Agency > About Us) */
+async function about(){if(!sb)return;let v=null;try{const r=await sb.from("site_content").select("value").eq("key","agents_about").maybeSingle();v=r.data&&r.data.value}catch(e){}
+ const d=Object.assign({heading:"About Us",p1:"SOKO Smart is Kenya's marketplace for products, jobs, freelance work and services, with shops, secure payments and a wallet built in. Our agents are the people who help it grow, one customer and one shop at a time.",p2:"Agents introduce shoppers and sellers to SOKO Smart, keep their customers in one place, and are rewarded for the business they bring in.",bullets:["Your own agent dashboard and referral link","A list of every customer you bring","A wallet you can withdraw from by M-Pesa"],button:"Join as an agent",image:""},v||{});
+ $("#abh").textContent=d.heading;$("#abt").innerHTML=[d.p1,d.p2].filter(Boolean).map(t=>`<p>${esc(t)}</p>`).join("");
+ $("#abl").innerHTML=(d.bullets||[]).filter(Boolean).map(t=>`<li>${SV('<path d="M20 6L9 17l-5-5"/>',20)}${esc(t)}</li>`).join("");$("#abb").textContent=d.button||"Join as an agent";
+ if(d.image&&/^https?:\/\//i.test(d.image))$("#abimg").innerHTML=`<img alt="" src="${esc(d.image)}" style="display:block;width:100%;height:auto">`}
+
+/* ---------- actions ---------- */
+document.addEventListener("click",async e=>{let b;
+ if(b=e.target.closest("[data-do]")){const a=b.dataset.do;
+  if(a==="login")loginDlg();else if(a==="signup")signupDlg();else if(a==="wallet")walletDlg();
+  else if(a==="logout")logoutDlg();
+  else if(a==="logout2"){$("#dl").close();await sb.auth.signOut();U=null;AG=null;VIEW="site";show("site");toast("You have been logged out.")}return}
+ if(b=e.target.closest("[data-v]")){show(b.dataset.v);return}
+ if(e.target.closest("#cp")){const i=$("#rl");try{await navigator.clipboard.writeText(i.value)}catch(x){i.select();document.execCommand("copy")}toast("Referral link copied.");return}
+ if(e.target.closest("#ac")){custDlg();return}
+ if(e.target.closest("#os")){shopDlg();return}
+ if(e.target.closest("#ap")){portDlg();return}
+ if(e.target.closest("#bm")){BN+=6;drawBlogs();return}
+ if(e.target.closest("#jn")){const m=await register();if(m){toast(m,"error");return}await loadAgent();show("dash");return}
+ if(b=e.target.closest("[data-cd]")){if(!confirm("Remove this customer from your list?"))return;const {error}=await sb.from("agent_customers").delete().eq("id",b.dataset.cd);if(error){toast(error.message,"error");return}CUST=CUST.filter(x=>x.id!==b.dataset.cd);drawApp();toast("Customer removed.");return}
+ if(b=e.target.closest("[data-pd]")){if(!confirm("Remove this portfolio item?"))return;const {error}=await sb.from("agent_portfolio").delete().eq("id",b.dataset.pd);if(error){toast(error.message,"error");return}PORT=PORT.filter(x=>x.id!==b.dataset.pd);drawApp();toast("Item removed.");return}
+ if(b=e.target.closest("a[data-site]")){const h=b.getAttribute("href");if(VIEW!=="site"){e.preventDefault();show("site");setTimeout(()=>{const t=document.querySelector(h);t&&t.scrollIntoView({behavior:"smooth"})},60)}}});
+document.addEventListener("change",e=>{if(e.target.name==="pick"&&e.target.closest("#sh")){const c=CUST.find(x=>x.id===e.target.value),f=e.target.form;if(c){f.fn.value=c.name||"";f.em.value=c.email||"";f.ph.value=c.phone||""}}
+ if(e.target.name==="ph"&&e.target.type==="file"&&e.target.closest("#pf")){const x=e.target.files[0];if(x)$("#pfp").innerHTML=`<img alt="" src="${URL.createObjectURL(x)}">`}});
+
+document.addEventListener("submit",async e=>{const f=e.target;e.preventDefault();
+ if(f.id==="lf"){const E=m=>$("#le").textContent=m,go=$("#lg");E("");const em=f.em.value.trim().toLowerCase();if(!em||!f.pw.value)return E("Enter your email and password.");
+  go.disabled=true;const {error}=await sb.auth.signInWithPassword({email:em,password:f.pw.value});go.disabled=false;
+  if(error){if(/not confirmed/i.test(error.message)){$("#le").innerHTML='Please verify your email first. We sent you a link. <button type="button" id="rs" style="border:0;background:none;color:#0B4A2E;font-weight:700;text-decoration:underline;cursor:pointer">Send it again</button>';$("#rs").onclick=async()=>{const r=await sb.auth.resend({type:"signup",email:em});toast(r.error?r.error.message:"Verification email sent.",r.error?"error":"")}}else E(/invalid/i.test(error.message)?"That email or password is not right.":error.message);return}
+  $("#dl").close();VIEW="dash";await init();toast("Welcome back!")}
+ else if(f.id==="sf"){const E=m=>$("#se").textContent=m,go=$("#sg");E("");const nm=f.nm.value.trim(),em=f.em.value.trim().toLowerCase(),ph=f.ph.value.replace(/\s+/g,""),pw=f.pw.value;
+  if(nm.length<2)return E("Enter your full name.");if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em))return E("Enter a valid email address.");if(!phoneOk(ph))return E("Enter a valid Kenyan phone number, e.g. 0712 345 678.");
+  if(pw.length<8)return E("The password must be at least 8 characters.");if(pw!==f.pc.value)return E("The passwords do not match.");
+  go.disabled=true;go.textContent="Creating…";
+  const {data,error}=await sb.auth.signUp({email:em,password:pw,options:{data:{full_name:nm,phone:ph,is_agent:true},emailRedirectTo:location.href.split("#")[0].split("?")[0]}});
+  go.disabled=false;go.textContent="Create account";
+  if(error)return E(error.message);if(data.user&&data.user.identities&&!data.user.identities.length)return E("That email already has an account. Log in instead.");
+  if(data.session){$("#dl").close();VIEW="dash";await init();toast("Welcome to SOKO Smart agents!");return}
+  popup(head("Check your email","One more step")+`<div class="db"><p style="margin:0 0 12px">We sent a verification link to <b>${esc(em)}</b>. Open it to verify your email, then log in.</p><button class="btn p" data-do="login" type="button" style="width:100%">Go to log in</button></div>`)}
+ else if(f.id==="wf"){const E=m=>$("#we").textContent=m,am=Math.round(+f.am.value),go=$("#wg");E("");
+  if(!(am>=MIN))return E("The minimum withdrawal is "+kes(MIN)+".");if(am>BAL)return E("That is more than your wallet balance.");if(!phoneOk(f.ph.value))return E("Enter a valid M-Pesa number, e.g. 0712 345 678.");
+  go.disabled=true;const r=await sb.rpc("agent_withdraw_request",{p_amount:am,p_phone:f.ph.value});go.disabled=false;
+  if(r.error){const m=r.error.message||"";return E(/insufficient/.test(m)?"That is more than your wallet balance.":/min_withdraw/.test(m)?"The minimum withdrawal is "+kes(MIN)+".":help(m))}
+  await loadAgent();header();if(!$("#app").hidden)drawApp();popup(head("Withdrawal requested","")+`<div class="db"><p style="margin:0 0 12px"><b>${kes(am)}</b> will be sent to your M-Pesa by the SOKO Smart team.</p><button class="btn p" data-close type="button" style="width:100%">Done</button></div>`)}
+ else if(f.id==="cf"){const E=m=>$("#ce").textContent=m,go=$("#cg");E("");
+  const nm=f.nm.value.trim(),em=f.em.value.trim().toLowerCase(),ph=f.ph.value.replace(/\s+/g,""),pw=f.pw.value;
+  if(nm.length<2)return E("Enter the customer's name.");if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em))return E("Enter a valid email address.");if(!phoneOk(ph))return E("Enter a valid Kenyan phone number, e.g. 0712 345 678.");
+  if(!f.hh.value)return E("Choose how they heard about us.");if(pw.length<8)return E("The password must be at least 8 characters.");if(pw!==f.pc.value)return E("The passwords do not match.");
+  go.disabled=true;go.textContent="Registering…";const fail=m=>{E(m);go.disabled=false;go.textContent="Register customer"};
+  try{const av=await upload(f.av.files[0],"customer-avatar",2e6);
+   const {data,error}=await tmpClient().auth.signUp({email:em,password:pw,options:{data:{full_name:nm,phone:ph,heard_from:f.hh.value,...(av?{avatar_url:av}:{})}}});
+   if(error)return fail(error.message);if(!data.user||(data.user.identities&&!data.user.identities.length))return fail("That email already has an account. Ask them to log in, or share your referral link.");
+   const r=await sb.rpc("agent_add_customer",{p_user:data.user.id,p_name:nm,p_phone:ph,p_email:em,p_heard:f.hh.value});
+   if(r.error)return fail("The account was created but could not be added to your list: "+help(r.error.message));
+   await loadAgent();$("#dl").close();drawApp();toast(nm+" is registered and can log in on SOKO Smart.")}catch(x){fail(x.message||"Something went wrong.")}}
+ else if(f.id==="sh"){const E=m=>$("#she").textContent=m,go=$("#shg");E("");const v=n=>f[n]?f[n].value.trim():"";
+  if(v("fn").length<2)return E("Enter the owner's full name.");if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v("em")))return E("Enter a valid email address.");if(!phoneOk(v("ph")))return E("Enter a valid phone number, e.g. 0712 345 678.");
+  if(!v("sn"))return E("Enter the shop name.");if(f.mc&&!v("mc"))return E("Choose a main category.");if(!v("co")||!v("tw")||!v("dt"))return E("Fill in the county, town and the street or landmark.");
+  go.disabled=true;go.textContent="Saving…";const fail=m=>{E(m);go.disabled=false;go.textContent="Create shop"};
+  try{const logo=await upload(f.lg.files[0],"shop-logo",2e6);
+   const row={full_name:v("fn"),email:v("em").toLowerCase(),phone:v("ph"),shop_name:v("sn"),county:v("co"),town:v("tw"),neighbourhood:v("nb"),details:v("dt"),agent_id:U.id};
+   const ins=async extra=>{let x=await sb.from("shop_applications").insert({...row,...extra,status:"awaiting_payment"}).select("id").single();if(x.error&&/status|check constraint|enum|invalid input value/i.test(x.error.message))x=await sb.from("shop_applications").insert({...row,...extra,status:"pending"}).select("id").single();return x};
+   const extra={};if(logo)extra.logo_url=logo;if(v("mc"))extra.main_category_id=+v("mc");
+   let r=await ins(extra);for(let n=0;r.error&&n<2;n++){const c=(String(r.error.message).match(/logo_url|main_category_id/)||[])[0];if(!c||!(c in extra))break;delete extra[c];r=await ins(extra)}
+   if(r.error)return fail(/row-level|policy/i.test(r.error.message)?"Run supabase-agents.sql in Supabase so agents can open shops.":help(r.error.message));
+   await loadAgent();$("#dl").close();show("refs");toast("Shop saved. Its owner can now log in with that email to activate it.")}catch(x){fail(x.message||"Something went wrong.")}}
+ else if(f.id==="pf"){const E=m=>$("#pfe").textContent=m,go=$("#pfg");E("");go.disabled=true;
+  try{const ph=await upload(f.ph.files[0],"agent-photo",3e6);const row={agent_id:U.id,headline:f.hl.value.trim()||null,bio:f.bio.value.trim()||null,county:f.co.value||null,photo_url:ph||(PROF&&PROF.photo_url)||null,updated_at:new Date().toISOString()};
+   const {error}=await sb.from("agent_profile").upsert(row,{onConflict:"agent_id"});if(error)throw error;PROF=row;try{await sb.rpc("agent_check_badges")}catch(x){}await loadAgent();side();drawApp();toast("Profile saved.")}catch(x){E(help(x.message||String(x)))}go.disabled=false}
+ else if(f.id==="pi"){const E=m=>$("#pie").textContent=m,go=$("#pig");E("");if(!f.ti.value.trim())return E("Add a title.");go.disabled=true;
+  try{const im=await upload(f.im.files[0],"portfolio",3e6);const {error}=await sb.from("agent_portfolio").insert({agent_id:U.id,title:f.ti.value.trim(),description:f.de.value.trim()||null,image_url:im});if(error)throw error;
+   await loadAgent();$("#dl").close();drawApp();toast("Portfolio item added.")}catch(x){E(help(x.message||String(x)));go.disabled=false}}});
+
+if(sb)sb.auth.onAuthStateChange(ev=>{if(ev==="SIGNED_OUT"&&U){U=null;AG=null;VIEW="site";show("site")}});
+addEventListener("hashchange",hashAction);
+about();blogs();init();
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free Things – SOKO Smart</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="stylesheet" href="soko.css?v=14">
+<link rel="stylesheet" href="mobile.css?v=2">
+<script defer src="mobile.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="soko.js?v=32"></script>
+<style>
+.fl{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+#tabs{display:flex;gap:6px;overflow-x:auto;padding:12px 0 4px}#tabs button{border:1px solid var(--bd);background:var(--bg);color:var(--tx);border-radius:20px;padding:6px 16px;white-space:nowrap;font-weight:700;cursor:pointer}#tabs .on{background:var(--g);border-color:var(--g);color:#fff}
+#res.grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+#res .price{display:none}#res .fav{display:none}
+</style>
+</head>
+<body>
+<div id="hd"></div>
+<main><section class="alt"><div class="w">
+<h2>Free Things <a href="profile.html#free">+ Give something away</a></h2>
+<p class="m" style="margin-top:-8px">Giveaways, charity drives and donations from people across Kenya. Everything here is free.</p>
+<div id="tabs" role="tablist" aria-label="Categories"></div>
+<form class="fl" id="ff" onsubmit="return false">
+ <input id="fq" type="search" placeholder="Search free things" aria-label="Search free things">
+ <select id="fk" aria-label="Type"><option value="">Any type</option><option>Giveaway</option><option>Charity</option><option>Donation</option><option>Free to collect</option></select>
+ <select id="fc" aria-label="County"></select>
+</form>
+<div class="tb"><strong id="cnt" aria-live="polite"></strong></div>
+<div id="res" class="grid"></div>
+<p class="more"><button class="btn p" id="more" hidden>Load more</button></p>
+</div></section></main>
+<div id="ft"></div>
+<script>
+shell("free.html");
+const PAGE=12;let pg=0,tk=0,tm,cat=new URLSearchParams(location.search).get("category")||"",cats=[];
+const clean=v=>String(v||"").replace(/[%,()*\\_]/g," ").trim().slice(0,60);
+$("#fc").innerHTML='<option value="">All Kenya</option>'+COUNTIES.map(c=>`<option>${esc(c)}</option>`).join("");
+$("#fq").value=new URLSearchParams(location.search).get("q")||"";
+function tabs(){$("#tabs").innerHTML=cats.length?[["","All"],...cats.map(c=>[String(c.id),c.name])].map(([id,n])=>`<button type="button" role="tab" data-c="${esc(id)}" class="${id===String(cat)?"on":""}" aria-selected="${id===String(cat)}">${esc(n)}</button>`).join(""):""}
+async function run(more){
+ if(!sb){$("#res").innerHTML='<div class="msg">Connect Supabase (CFG in soko.js) to load listings.</div>';return}
+ const my=++tk;if(!more){pg=0;$("#res").innerHTML='<div class="sk"></div>'.repeat(4)}
+ let b=sb.from("free_listings").select("*",{count:"exact"}).eq("status","approved");
+ const q=clean($("#fq").value);if(q)b=b.or(`title.ilike.%${q}%,description.ilike.%${q}%`);
+ if(cat&&+cat>0)b=b.eq("category_id",+cat);if($("#fk").value)b=b.eq("kind",$("#fk").value);if($("#fc").value)b=b.eq("county",$("#fc").value);
+ const {data,count,error}=await b.order("created_at",{ascending:false}).range(pg*PAGE,pg*PAGE+PAGE-1);if(my!==tk)return;
+ if(error){$("#res").innerHTML=`<div class="msg">${esc(/category_id/.test(error.message)?"Categories are not set up for free things yet. Run supabase-free-categories.sql in Supabase.":error.message)}</div>`;return}
+ $("#cnt").textContent=`${(count||0).toLocaleString("en-KE")} ${count===1?"free item":"free items"}`;
+ const h=(data||[]).map(r=>pcard(r,"free","title",r.kind||"Free")).join("");
+ $("#res").innerHTML=more?$("#res").innerHTML+h:h||'<div class="msg">Nothing here yet. Be the first to give something away.</div>';$("#more").hidden=(pg+1)*PAGE>=(count||0)}
+$("#tabs").addEventListener("click",e=>{const b=e.target.closest("[data-c]");if(!b)return;cat=b.dataset.c;tabs();history.replaceState(null,"",cat?"?category="+encodeURIComponent(cat):location.pathname);run()});
+$("#ff").addEventListener("input",()=>{clearTimeout(tm);tm=setTimeout(run,350)});$("#more").onclick=()=>{pg++;run(true)};
+(async()=>{if(sb){const r=await sb.from("categories").select("id,name").eq("section","free").order("sort_order");cats=r.data||[]}tabs();run()})();
+</script>
+</body>
+</html>

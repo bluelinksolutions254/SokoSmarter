@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agency Blog – SOKO Smart Agents</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="stylesheet" href="agents.css?v=5">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="blogmd.js?v=4"></script>
+<style>
+body{background:#fff}
+.pgrid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start;padding:22px 0 40px}
+@media(max-width:900px){.pgrid{grid-template-columns:1fr}}
+.art{min-width:0}
+.crumb{display:flex;flex-wrap:wrap;gap:4px 8px;font-size:13.5px;color:var(--mut);margin-bottom:14px;align-items:center}
+.crumb a{color:var(--tx);text-decoration:none}.crumb a:hover{color:var(--g)}.crumb i{font-style:normal}
+.crumb span{color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.art .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.art h1{font-size:clamp(28px,4.4vw,40px);line-height:1.15;margin:8px 0 12px;letter-spacing:-.01em;color:var(--tx)}
+.art .lead{font-size:19px;line-height:1.55;color:var(--mut);margin:0 0 18px}
+.byl{display:flex;gap:10px 14px;align-items:center;flex-wrap:wrap;margin-bottom:20px;font-size:14.5px;color:var(--mut)}
+.byl b{color:var(--tx)}.byl .sep{width:1px;height:20px;background:var(--bd)}
+.tav{width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--bd);object-fit:contain;padding:2px;flex:none}.vbd{display:inline-flex;vertical-align:-3px;margin-left:4px}
+.byl .av2{width:38px;height:38px;border-radius:50%;background:var(--g);color:#fff;display:inline-grid;place-items:center;font-weight:800;flex:none}
+.shr{margin-left:auto;display:flex;gap:8px}.shr a,.shr button{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#fff;text-decoration:none;border:0;cursor:pointer}.shr a:hover,.shr button:hover{opacity:.85}
+.art .cover{width:100%;border-radius:14px;margin:0 0 22px;display:block;max-height:460px;object-fit:cover}
+.prose{font-size:17.5px;line-height:1.75;color:#2a2622;overflow-wrap:anywhere}
+.prose h2,.prose h3,.prose h4{line-height:1.3;margin:1.5em 0 .45em;color:var(--tx)}.prose h2{font-size:25px}.prose h3{font-size:21px}
+.prose p{margin:0 0 1.1em}.prose ul,.prose ol{margin:0 0 1.2em;padding-left:1.4em}.prose li{margin:.3em 0}
+.prose img{max-width:100%;border-radius:12px;margin:.6em 0;display:block}
+.prose a{color:var(--g);text-decoration:underline;text-underline-offset:3px}
+.prose blockquote{margin:1.3em 0;padding:14px 20px;border-left:5px solid var(--g);background:var(--gt);border-radius:10px;color:#1f3d2a;font-weight:600}
+.prose hr{border:0;border-top:1px solid var(--bd);margin:1.8em 0}
+.prose code{background:#f4f1e8;padding:2px 6px;border-radius:6px;font-size:.92em}
+.prose pre{background:#f4f1e8;padding:14px;border-radius:10px;overflow:auto}.prose pre code{background:none;padding:0}
+.prose del{opacity:.7}
+.prose strong,.prose b{font-weight:800;color:var(--tx)}.prose em,.prose i{font-style:italic}
+.prose h1{font-size:32px;line-height:1.25;margin:1.5em 0 .45em;color:var(--tx)}.prose h4{font-size:18px}.prose h5{font-size:16px;line-height:1.3;margin:1.5em 0 .45em;color:var(--tx)}
+.act{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0;padding:14px 0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.act a,.act button{display:inline-flex;gap:8px;align-items:center;border:1.5px solid var(--bd);background:#fff;border-radius:999px;padding:9px 18px;font:inherit;font-weight:700;color:var(--tx);cursor:pointer;text-decoration:none}.act a:hover,.act button:hover{border-color:var(--o);color:var(--od)}
+.relp{margin-top:32px;background:var(--gt);border-radius:14px;padding:16px}.relp h2{font-size:22px;margin:0 0 14px}
+.rg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}@media(max-width:700px){.rg{grid-template-columns:1fr}}
+.rg .bgc h3{font-size:16px}
+.rail2{display:grid;gap:18px;position:sticky;top:96px}
+.sbp{background:#fff;border:1px solid var(--bd);border-radius:12px;overflow:hidden}
+.sbp h3{margin:0;background:var(--g);color:#fff;font-size:16px;padding:12px 14px}
+.pi{display:grid;grid-template-columns:24px 76px minmax(0,1fr);gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--bd);color:inherit;text-decoration:none}.pi:last-child{border-bottom:0}.pi:hover b{color:var(--od)}
+.pi i{width:22px;height:22px;border-radius:50%;background:var(--o);color:#fff;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:12px}
+.pi .th{width:76px;height:56px;border-radius:8px;overflow:hidden;background:linear-gradient(135deg,var(--g),var(--g2));display:grid;place-items:center}.pi .th img{width:100%;height:100%;object-fit:cover}
+.pi b{font-size:14px;line-height:1.3;display:block}.pi small{color:var(--mut);font-size:12px}
+.joinp{background:var(--g);color:#fff;border-radius:12px;padding:20px;display:grid;gap:10px}.joinp h3{color:#fff;font-size:20px;background:none;padding:0}.joinp p{margin:0;opacity:.9;font-size:14.5px}
+.nf{padding:60px 0;text-align:center}
+</style>
+</head>
+<body>
+<header class="hdr" style="position:sticky"><div class="bar"><a class="brand" href="agents.html"><img src="logo.png" alt="SOKO Smart"><small>AGENTS</small></a><nav id="nv" aria-label="Main"><a href="agents.html">Home</a><a href="agents.html#about">About Us</a><a href="agents.html#why">Why Work With Us</a><a href="agents.html#blogs" class="on">Blogs</a></nav><div id="acct"></div></div></header>
+<main><div class="w"><div class="pgrid"><article class="art" id="art"><p class="m">Loading…</p></article>
+<aside class="rail2"><div class="sbp"><h3>Latest posts</h3><div id="lat"></div></div><div class="joinp"><h3>Become a SOKO Smart agent</h3><p>Earn by bringing customers and shops to SOKO Smart, and withdraw to M-Pesa.</p><a class="btn o" href="agents.html#signup">Sign up free</a></div></aside></div></div></main>
+<footer><div class="w"><span>© SOKO Smart. All rights reserved.</span><span><a href="agents.html">Back to Agents</a> · <a href="index.html">SOKO Smart</a></span></div></footer>
+<script>
+const CFG={url:"https://xalatowgjhwayrncrfbq.supabase.co",key:"sb_publishable_CfY5JZTUXpx51pkfbwey7w_jZtrYwog"};
+const sb=window.supabase?supabase.createClient(CFG.url,CFG.key):null;
+const $=s=>document.querySelector(s),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const dt=d=>d?new Date(d).toLocaleDateString("en-KE",{day:"numeric",month:"long",year:"numeric"}):"";
+const mins=t=>typeof blogRead==="function"?blogRead(t):Math.max(1,Math.round(String(t||"").trim().split(/\s+/).length/200));
+const url=b=>"agentblog.html?slug="+encodeURIComponent(b.slug||b.id);
+const SV=(p,z=20)=>`<svg width="${z}" height="${z}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+const card=b=>`<a class="bgc" href="${url(b)}"><div class="im">${b.cover_url?`<img loading="lazy" alt="" src="${esc(b.cover_url)}">`:SV('<path d="M4 4h16v16H4zM8 9h8M8 13h8M8 17h5"/>',40)}</div><div class="cb"><span class="bt">Agency</span><h3>${esc(b.title)}</h3><div class="ft"><span>${esc(dt(b.published_at||b.created_at))}</span><span class="rd">Read more →</span></div></div></a>`;
+(async()=>{
+ if(!sb){$("#art").innerHTML='<div class="nf"><h1>Blog unavailable</h1></div>';return}
+ try{const s=(await sb.auth.getSession()).data.session;if(s)$("#acct").innerHTML='<a class="btn p s" href="agents.html#dash">My dashboard</a>';else $("#acct").innerHTML='<a class="ib" href="agents.html#login">Login</a><a class="btn p s" href="agents.html#signup">Sign Up</a>'}catch(e){}
+ const slug=new URLSearchParams(location.search).get("slug");
+ const all=await sb.from("agency_blogs").select("id,title,slug,excerpt,cover_url,published_at,created_at").eq("status","published").order("published_at",{ascending:false}).limit(30);
+ const L=all.data||[];
+ $("#lat").innerHTML=L.slice(0,5).map((b,i)=>`<a class="pi" href="${url(b)}"><i>${i+1}</i><span class="th">${b.cover_url?`<img loading="lazy" alt="" src="${esc(b.cover_url)}">`:""}</span><span><b>${esc(b.title)}</b><small>${esc(dt(b.published_at||b.created_at))}</small></span></a>`).join("")||'<p class="m" style="padding:12px">No posts yet.</p>';
+ if(!slug){$("#art").innerHTML='<div class="nf"><h1>Agency Blogs</h1><p class="m">Pick a post to read.</p></div><div class="bgg" style="grid-template-columns:repeat(2,minmax(0,1fr))">'+L.map(card).join("")+'</div>';return}
+ let r=await sb.from("agency_blogs").select("*").eq("slug",slug).eq("status","published").maybeSingle();
+ if(!r.data&&/^[0-9a-f-]{36}$/i.test(slug))r=await sb.from("agency_blogs").select("*").eq("id",slug).eq("status","published").maybeSingle();
+ const b=r.data;
+ if(!b){$("#art").innerHTML='<div class="nf"><h1>Post not found</h1><p class="m">It may have been removed.</p><a class="btn p" href="agents.html#blogs">Back to Agency Blogs</a></div>';return}
+ document.title=b.title+" – SOKO Smart Agents";
+ const href=location.href.split("#")[0],enc=encodeURIComponent(href),tt=encodeURIComponent(b.title);
+ $("#art").innerHTML=`<div class="crumb"><a href="agents.html">Agents</a><i>›</i><a href="agents.html#blogs">Agency Blogs</a><i>›</i><span>${esc(b.title)}</span></div>
+ <div class="tags"><span class="bt o">Agency</span></div><h1>${esc(b.title)}</h1>${b.excerpt?`<p class="lead">${esc(b.excerpt)}</p>`:""}
+ <div class="byl"><img class="tav" src="logo.png" alt="SOKO Smart Team"><span>By <b>SOKO Smart Team</b><i class="vbd" title="Verified"><svg viewBox="0 0 24 24" width="16" height="16" aria-label="Verified" role="img"><path fill="#3897F0" d="M12 1.8l2.6 1.9 3.2-.1 1 3 2.6 1.9-1 3.1 1 3.1-2.6 1.9-1 3-3.2-.1L12 22.2l-2.6-1.9-3.2.1-1-3-2.6-1.9 1-3.1-1-3.1 2.6-1.9 1-3 3.2.1z"/><path d="M8 12.2l2.6 2.6L16 9.4" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg></i></span><span class="sep"></span><span>${esc(dt(b.published_at||b.created_at))}</span><span class="sep"></span><span>${mins(b.body)} min read</span>
+  <span class="shr"><a href="https://wa.me/?text=${tt}%20${enc}" target="_blank" rel="noopener" aria-label="Share on WhatsApp" style="background:#25D366">${SV('<path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/>',17)}</a><a href="https://www.facebook.com/sharer/sharer.php?u=${enc}" target="_blank" rel="noopener" aria-label="Share on Facebook" style="background:#1877F2">${SV('<path d="M15 3h-3a4 4 0 0 0-4 4v3H5v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/>',17)}</a><button type="button" id="cpy" aria-label="Copy link" style="background:var(--g)">${SV('<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',17)}</button></span></div>
+ ${b.cover_url?`<img class="cover" alt="" src="${esc(b.cover_url)}">`:""}
+ <div class="prose">${typeof blogMd==="function"?blogMd(b.body||""):"<p>"+esc(b.body||"")+"</p>"}</div>
+ <div class="act"><a href="agents.html#blogs">← All Agency Blogs</a><a href="agents.html#signup">Become an agent</a></div>
+ ${L.filter(x=>x.id!==b.id).length?`<section class="relp"><h2>More from Agency Blogs</h2><div class="rg">${L.filter(x=>x.id!==b.id).slice(0,3).map(card).join("")}</div></section>`:""}`;
+ const c=$("#cpy");if(c)c.onclick=async()=>{try{await navigator.clipboard.writeText(href);c.title="Copied"}catch(e){}}
+})();
+</script>
+</body>
+</html>
